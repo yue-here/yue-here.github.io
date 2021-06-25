@@ -30,9 +30,9 @@ twitter_username: _yue_wu
 github_username:  yue-here
 
 # Build settings
-# theme: minima
+theme: minima
 markdown: kramdown
-theme: null
+# theme: null
 plugins:
   - jekyll-feed
 

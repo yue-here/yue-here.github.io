@@ -6,7 +6,7 @@
 
 </center>
 
-In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. [TOC ROFL](https://tocrofl.tumblr.com/), of which I am a multiple [inductee](https://doi.org/10.1021/acs.chemmater.5b03085))
+In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. [TOC ROFL](https://tocrofl.tumblr.com/), of which I am a multiple [inductee](https://pubs.acs.org/cms/10.1021/acs.chemmater.5b03085/asset/images/medium/cm-2015-030857_0005.gif))
 
 In general, though, ToC images follow a fairly consistent visual language, with distinct conventions followed in different subfields. This presents an vaguely plausible excuse to train some machine learning models to generate ToCs and their accompanying paraphenalia. In this project, I use ToC images, titles and abstracts from one of the most longest running and well-known chemistry journals, the Journal of the American Chemical Society ([JACS](https://pubs.acs.org/journal/jacsat)) as a dataset to train:
 

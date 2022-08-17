@@ -1,12 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Yue Wu</title>
-        <link>https://yue-here.github.io/</link>
-        <description>Yue&#39;s site</description>
+        <title>All Posts - Yue Wu</title>
+        <link>https://yue-here.github.io/posts/</link>
+        <description>All Posts | Yue Wu</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yuewu[at]slac.stanford.edu (Yue Wu)</managingEditor>
-            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Mon, 01 Aug 2022 00:56:40 -0700</lastBuildDate>
-            <atom:link href="https://yue-here.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Mon, 01 Aug 2022 00:56:40 -0700</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>First_post</title>
     <link>https://yue-here.github.io/first_post/</link>
     <pubDate>Mon, 01 Aug 2022 00:56:40 -0700</pubDate>

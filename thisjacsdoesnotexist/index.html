@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>This JACS does not exist - Yue Wu</title><meta name="Description" content="Yue Wu"><meta property="og:title" content="This JACS does not exist" />
-<meta property="og:description" content="An imaginary abstract generated at ThisJACSdoesnotexist.com In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. TOC ROFL, of which I am a multiple inductee)
+<meta property="og:description" content="An imaginary abstract generated at thisJACSdoesnotexist.com In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. TOC ROFL, of which I am a multiple inductee)
 In general, though, ToC images follow a fairly consistent visual language, with distinct conventions followed in different subfields." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yue-here.github.io/thisjacsdoesnotexist/" /><meta property="article:section" content="posts" />
@@ -14,7 +14,7 @@ In general, though, ToC images follow a fairly consistent visual language, with 
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="This JACS does not exist"/>
-<meta name="twitter:description" content="An imaginary abstract generated at ThisJACSdoesnotexist.com In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. TOC ROFL, of which I am a multiple inductee)
+<meta name="twitter:description" content="An imaginary abstract generated at thisJACSdoesnotexist.com In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. TOC ROFL, of which I am a multiple inductee)
 In general, though, ToC images follow a fairly consistent visual language, with distinct conventions followed in different subfields."/>
 <meta name="application-name" content="Yue Wu">
 <meta name="apple-mobile-web-app-title" content="Yue Wu"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -140,7 +140,7 @@ In general, though, ToC images follow a fairly consistent visual language, with 
 </nav></div>
             </div><div class="content" id="content"><center>
 <p><a href="http://thisjacsdoesnotexist.com/" target="_blank" rel="noopener noreffer "><figure><img src="/TJDNE_website_3.png"/><figcaption>
-            <h4>An imaginary abstract generated at ThisJACSdoesnotexist.com</h4>
+            <h4>An imaginary abstract generated at thisJACSdoesnotexist.com</h4>
         </figcaption>
 </figure>
 </a></p>
@@ -153,7 +153,7 @@ In general, though, ToC images follow a fairly consistent visual language, with 
 <li>A <a href="https://huggingface.co/docs/transformers/model_doc/vision-encoder-decoder" target="_blank" rel="noopener noreffer ">vision encoder-decoder model</a> (<a href="#toc2title" rel="">test it out here</a>) that converts images to the appropriate text - here, the above GPT-2 model acts as the text generator.</li>
 <li>A <a href="https://huggingface.co/docs/transformers/model_doc/t5" target="_blank" rel="noopener noreffer ">T5 sequence-to-sequence model</a> (<a href="#title2abstract" rel="">test it out here</a>) that generates a text sequence from a prompt.</li>
 </ol>
-<p>For those who are interested in the inner workings or may want to do something similar, I&rsquo;ve included a writeup of the project below. Most of the code is available on my <a href="https://github.com/yue-here/tocgan" target="_blank" rel="noopener noreffer ">GitHub</a>. As you&rsquo;ll see, a lot of my choices were fairly abitrary, arising more-or-less from the availability heuristic.</p>
+<p>For those who are interested in the inner workings or may want to do something similar, I&rsquo;ve included a writeup of the project below. Examples of the code are available on my <a href="https://github.com/yue-here/tocgan" target="_blank" rel="noopener noreffer ">GitHub</a>. As you&rsquo;ll see, a lot of my choices were fairly abitrary, arising more-or-less from the availability heuristic.</p>
 <h2 id="training-the-gan">Training the GAN</h2>
 <h3 id="getting-the-dataset-ready">Getting the dataset ready</h3>
 <p>My initial idea was simply to see how well a GAN could generate ToC images, and so I needed a whole bunch of ToC images. I used the popular python package beautifulsoup with a headless browser and some simple loops to scrape the JACS website for the ToC images, titles and abstracts. The full dataset from around 60,000 papers could be collected overnight. Note: this was relatively easy with JACS (and ACS journals in general) as the website organisation follows a logical structure. YMMV for other publishers&rsquo; platforms.</p>

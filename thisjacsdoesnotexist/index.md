@@ -2,7 +2,7 @@
 
 <center>
 
-[{{< figure src="/TJDNE_website_3.png" title="An imaginary abstract generated at ThisJACSdoesnotexist.com" >}}](http://thisjacsdoesnotexist.com/)
+[{{< figure src="/TJDNE_website_3.png" title="An imaginary abstract generated at thisJACSdoesnotexist.com" >}}](http://thisjacsdoesnotexist.com/)
 
 </center>
 
@@ -15,7 +15,7 @@ In general, though, ToC images follow a fairly consistent visual language, with 
 3. A [vision encoder-decoder model](https://huggingface.co/docs/transformers/model_doc/vision-encoder-decoder) ([test it out here](#toc2title)) that converts images to the appropriate text - here, the above GPT-2 model acts as the text generator.
 4. A [T5 sequence-to-sequence model](https://huggingface.co/docs/transformers/model_doc/t5) ([test it out here](#title2abstract)) that generates a text sequence from a prompt.
 
-For those who are interested in the inner workings or may want to do something similar, I've included a writeup of the project below. Most of the code is available on my [GitHub](https://github.com/yue-here/tocgan). As you'll see, a lot of my choices were fairly abitrary, arising more-or-less from the availability heuristic.
+For those who are interested in the inner workings or may want to do something similar, I've included a writeup of the project below. Examples of the code are available on my [GitHub](https://github.com/yue-here/tocgan). As you'll see, a lot of my choices were fairly abitrary, arising more-or-less from the availability heuristic.
 
 ## Training the GAN
 ### Getting the dataset ready

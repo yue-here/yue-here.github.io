@@ -4,7 +4,15 @@
         <link>https://yue-here.github.io/posts/</link>
         <description>All Posts | Yue Wu</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yuewu[at]slac.stanford.edu (Yue Wu)</managingEditor>
-            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Mon, 01 Aug 2022 00:56:40 -0700</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Mon, 22 Aug 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Abstract2title</title>
+    <link>https://yue-here.github.io/abstract2title/</link>
+    <pubDate>Mon, 22 Aug 2022 00:00:00 &#43;0000</pubDate>
+    <author>Yue Wu</author>
+    <guid>https://yue-here.github.io/abstract2title/</guid>
+    <description><![CDATA[Many people enjoyed title2abstract from the this JACS does not exist project so I inverted the training parameters for a quick follow. Presenting abstract2title: You can also test the title2abstract and toc2title apps in my previous post.]]></description>
+</item>
+<item>
     <title>This JACS does not exist</title>
     <link>https://yue-here.github.io/thisjacsdoesnotexist/</link>
     <pubDate>Mon, 01 Aug 2022 00:56:40 -0700</pubDate>

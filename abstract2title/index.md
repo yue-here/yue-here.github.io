@@ -1,7 +1,7 @@
 # Abstract2title
 
 
-Many people enjoyed [title2abstract]({{< relref "thisjacsdoesnotexist#title2abstract" >}}) from the [this JACS does not exist](http://thisjacsdoesnotexist.com/) project so I inverted the training parameters for a quick follow. Presenting abstract2title:
+Many people enjoyed [title2abstract]({{< relref "thisjacsdoesnotexist#title2abstract" >}}) from the [this JACS does not exist](http://thisjacsdoesnotexist.com/) project so I inverted the training parameters for a quick follow up. Presenting abstract2title:
 <br><br>
 
 {{<abstract2title>}}<br>

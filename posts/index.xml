@@ -4,7 +4,17 @@
         <link>https://yue-here.github.io/posts/</link>
         <description>All Posts | Yue Wu</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yuewu[at]slac.stanford.edu (Yue Wu)</managingEditor>
-            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Mon, 22 Aug 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Thu, 25 Aug 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Training T5 models and generating text</title>
+    <link>https://yue-here.github.io/t5/</link>
+    <pubDate>Thu, 25 Aug 2022 00:00:00 &#43;0000</pubDate>
+    <author>Yue Wu</author>
+    <guid>https://yue-here.github.io/t5/</guid>
+    <description><![CDATA[For the language-to-language components of this JACS does not exist, I chose Google&rsquo;s T5 (text-to-text transfer transformer) as a recent cutting-edge text sequence to sequence model.
+I had already scraped all the JACS titles and abstracts, so training data was readily available. The first task was to generate somewhat-convincing abstracts from titles to increase the entertainment value of TJDNE.
+As abstracts have a maximum length, I wanted to make sure that a whole abstract would be included in T5&rsquo;s maximum input length of 512 tokens so that end-of-sequence locations could be determined.]]></description>
+</item>
+<item>
     <title>Abstract2title</title>
     <link>https://yue-here.github.io/abstract2title/</link>
     <pubDate>Mon, 22 Aug 2022 00:00:00 &#43;0000</pubDate>

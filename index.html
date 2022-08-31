@@ -37,7 +37,7 @@
             <a href="/" title="Yue Wu"><span class="header-title-pre"><i class='fa-solid fa-vial fa-fw' aria-hidden='true'></i></span>Yue Wu</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/research/"> Research </a><a class="menu-item" href="/personal/"> Personal </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/index.html"> Home </a><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/research/"> Research </a><a class="menu-item" href="/personal/"> Personal </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw" aria-hidden="true"></i>
@@ -79,7 +79,7 @@
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/research/" title="">Research</a><a class="menu-item" href="/personal/" title="">Personal</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                </div><a class="menu-item" href="/index.html" title="">Home</a><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/research/" title="">Research</a><a class="menu-item" href="/personal/" title="">Personal</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
@@ -89,7 +89,7 @@
     <div class="search-dropdown mobile">
         <div id="search-dropdown-mobile"></div>
     </div><main class="main">
-                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-avatar"><a href="/bio/" title="Bio"><img
+                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-avatar"><a href="/index.html" title="Home"><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/images/avatar.jpg"
@@ -98,6 +98,12 @@
         alt="/images/avatar.jpg"
         title="/images/avatar.jpg" /></a></div><div class="home-subtitle">Materials science, characterisation, ML</div><div class="links"><a href="https://github.com/yue-here" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://linkedin.com/in/yue-here/" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="https://twitter.com/_yue_wu" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="https://scholar.google.com/citations?SsdCQj8AAAAJ" title="Google Scholar" target="_blank" rel="noopener noreffer me"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/googlescholar.svg" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/t5/">Training T5 models and generating text</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-08-25">2022-08-25</time></span></div><div class="content">For the language-to-language components of this JACS does not exist, I chose Google&rsquo;s T5 (text-to-text transfer transformer) as a recent cutting-edge text sequence to sequence model.
+I had already scraped all the JACS titles and abstracts, so training data was readily available. The first task was to generate somewhat-convincing abstracts from titles to increase the entertainment value of TJDNE.
+As abstracts have a maximum length, I wanted to make sure that a whole abstract would be included in T5&rsquo;s maximum input length of 512 tokens so that end-of-sequence locations could be determined.</div><div class="post-footer">
+        <a href="/t5/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/abstract2title/">Abstract2title</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-08-22">2022-08-22</time></span></div><div class="content">Many people enjoyed title2abstract from the this JACS does not exist project so I inverted the training parameters for a quick follow up. Presenting abstract2title: You can also test the title2abstract and toc2title apps in my previous post.</div><div class="post-footer">
         <a href="/abstract2title/">Read More</a></div>

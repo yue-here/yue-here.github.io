@@ -1,30 +1,30 @@
 # Chemical Diffusion
 
-Generative text-to-image models have recent become very popular. Having a bunch of leftover data from the [This JACS Does Not Exist](http://thisjacsdoesnotexist.com/) project, I've trained a Stable Diffusion checkpoint on the ~60K JACS table-of-contents images with paper titles as the captions. Here are some examples with the prompt in the caption:
+Generative text-to-image models have recent become very popular. Having a bunch of fully captioned images left over from the [This JACS Does Not Exist](http://thisjacsdoesnotexist.com/) project, I've trained a Stable Diffusion checkpoint on that dataset (~60K JACS table-of-contents images with matched paper titles). It seems to work pretty well. Here are some examples of prompts and the resulting images generated:
 
 <center>
 
-![Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis](/chemdiff_1.png)
 <br>"Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis"
-<br><br>
+<br>
+![Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis](/chemdiff_1.png)
 
-![Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability](/chemdiff_2.png)
+
 <br>"Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability"
-<br><br>
+<br>
+![Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability](/chemdiff_2.png)
 
-![A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture](/chemdiff_3.png)
 <br>"A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture"
-<br><br>
+<br>
+![A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture](/chemdiff_3.png)
 
-![The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein](/chemdiff_4.png)
 <br>"The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein"
-<br><br>
-
+<br>
+![The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein](/chemdiff_4.png)
 
 </center>
 
 ## Running the model
-The fun of generative models is in running it yourself of course. If you're not familiar with the process, here's a quick guide:
+The fun of generative models is in running it yourself of course. I've uploaded a tuned checkpoint that can be freely downloaded. If you're not familiar with the process, here's a quick guide:
 1. Install a Stable Diffusion UI. I've been using [this one](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which has good installation instructions and works on both windows with NVIDIA/AMD GPUs and apple silicon.
 2. Download the trained chemical diffusion checkpoint [hosted here on hugging face](https://huggingface.co/yuewu/chemical-diffusion/tree/main) - you just need to put the .ckpt file (~2.5GB) in the `\stable-diffusion-webui\models\Stable-diffusion` folder
 3. Run the UI and have fun!

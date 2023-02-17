@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Chemical Diffusion - Yue Wu</title><meta name="Description" content="Yue Wu"><meta property="og:title" content="Chemical Diffusion" />
-<meta property="og:description" content="Generative text-to-image models have recent become very popular. Having a bunch of leftover data from the This JACS Does Not Exist project, I&rsquo;ve trained a Stable Diffusion checkpoint on the ~60K JACS table-of-contents images with paper titles as the captions. Here are some examples with the prompt in the caption:
+<meta property="og:description" content="Generative text-to-image models have recent become very popular. Having a bunch of fully captioned images left over from the This JACS Does Not Exist project, I&rsquo;ve trained a Stable Diffusion checkpoint on that dataset (~60K JACS table-of-contents images with matched paper titles). It seems to work pretty well. Here are some examples of prompts and the resulting images generated:
 &ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&rdquo; &ldquo;Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability&rdquo; &ldquo;A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture&rdquo; &ldquo;The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein&rdquo; Running the model The fun of generative models is in running it yourself of course." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yue-here.github.io/chemicaldiffusion/" /><meta property="article:section" content="posts" />
@@ -14,7 +14,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Chemical Diffusion"/>
-<meta name="twitter:description" content="Generative text-to-image models have recent become very popular. Having a bunch of leftover data from the This JACS Does Not Exist project, I&rsquo;ve trained a Stable Diffusion checkpoint on the ~60K JACS table-of-contents images with paper titles as the captions. Here are some examples with the prompt in the caption:
+<meta name="twitter:description" content="Generative text-to-image models have recent become very popular. Having a bunch of fully captioned images left over from the This JACS Does Not Exist project, I&rsquo;ve trained a Stable Diffusion checkpoint on that dataset (~60K JACS table-of-contents images with matched paper titles). It seems to work pretty well. Here are some examples of prompts and the resulting images generated:
 &ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&rdquo; &ldquo;Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability&rdquo; &ldquo;A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture&rdquo; &ldquo;The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein&rdquo; Running the model The fun of generative models is in running it yourself of course."/>
 <meta name="application-name" content="Yue Wu">
 <meta name="apple-mobile-web-app-title" content="Yue Wu"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/chemicaldiffusion\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  322 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  341 ,
         "url": "https:\/\/yue-here.github.io\/chemicaldiffusion\/","datePublished": "2023-02-15T00:00:00+00:00","dateModified": "2023-02-15T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -104,7 +104,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Chemical Diffusion</h1><h2 class="single-subtitle">Text-to-image for chemistry ToC images</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;322 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;341 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -118,51 +118,51 @@
     <li><a href="#training">Training</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>Generative text-to-image models have recent become very popular. Having a bunch of leftover data from the <a href="http://thisjacsdoesnotexist.com/" target="_blank" rel="noopener noreffer ">This JACS Does Not Exist</a> project, I&rsquo;ve trained a Stable Diffusion checkpoint on the ~60K JACS table-of-contents images with paper titles as the captions. Here are some examples with the prompt in the caption:</p>
+            </div><div class="content" id="content"><p>Generative text-to-image models have recent become very popular. Having a bunch of fully captioned images left over from the <a href="http://thisjacsdoesnotexist.com/" target="_blank" rel="noopener noreffer ">This JACS Does Not Exist</a> project, I&rsquo;ve trained a Stable Diffusion checkpoint on that dataset (~60K JACS table-of-contents images with matched paper titles). It seems to work pretty well. Here are some examples of prompts and the resulting images generated:</p>
 <center>
-<p><img
+<p><br>&ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&rdquo;
+<br>
+<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/chemdiff_1.png"
         data-srcset="/chemdiff_1.png, /chemdiff_1.png 1.5x, /chemdiff_1.png 2x"
         data-sizes="auto"
         alt="/chemdiff_1.png"
-        title="Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis" />
-<br>&ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&rdquo;
-<br><br></p>
-<p><img
+        title="Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis" /></p>
+<p><br>&ldquo;Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability&rdquo;
+<br>
+<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/chemdiff_2.png"
         data-srcset="/chemdiff_2.png, /chemdiff_2.png 1.5x, /chemdiff_2.png 2x"
         data-sizes="auto"
         alt="/chemdiff_2.png"
-        title="Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability" />
-<br>&ldquo;Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability&rdquo;
-<br><br></p>
-<p><img
+        title="Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability" /></p>
+<p><br>&ldquo;A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture&rdquo;
+<br>
+<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/chemdiff_3.png"
         data-srcset="/chemdiff_3.png, /chemdiff_3.png 1.5x, /chemdiff_3.png 2x"
         data-sizes="auto"
         alt="/chemdiff_3.png"
-        title="A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture" />
-<br>&ldquo;A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture&rdquo;
-<br><br></p>
-<p><img
+        title="A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture" /></p>
+<p><br>&ldquo;The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein&rdquo;
+<br>
+<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/chemdiff_4.png"
         data-srcset="/chemdiff_4.png, /chemdiff_4.png 1.5x, /chemdiff_4.png 2x"
         data-sizes="auto"
         alt="/chemdiff_4.png"
-        title="The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein" />
-<br>&ldquo;The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein&rdquo;
-<br><br></p>
+        title="The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein" /></p>
 </center>
 <h2 id="running-the-model">Running the model</h2>
-<p>The fun of generative models is in running it yourself of course. If you&rsquo;re not familiar with the process, here&rsquo;s a quick guide:</p>
+<p>The fun of generative models is in running it yourself of course. I&rsquo;ve uploaded a tuned checkpoint that can be freely downloaded. If you&rsquo;re not familiar with the process, here&rsquo;s a quick guide:</p>
 <ol>
 <li>Install a Stable Diffusion UI. I&rsquo;ve been using <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank" rel="noopener noreffer ">this one</a>, which has good installation instructions and works on both windows with NVIDIA/AMD GPUs and apple silicon.</li>
 <li>Download the trained chemical diffusion checkpoint <a href="https://huggingface.co/yuewu/chemical-diffusion/tree/main" target="_blank" rel="noopener noreffer ">hosted here on hugging face</a> - you just need to put the .ckpt file (~2.5GB) in the <code>\stable-diffusion-webui\models\Stable-diffusion</code> folder</li>

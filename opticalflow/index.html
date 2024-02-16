@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Optical flow timelapse stabiliser - Yue Wu</title><meta name="Description" content="Yue Wu"><meta property="og:title" content="Optical flow timelapse stabiliser" />
-<meta property="og:description" content="For associated code, please see the Jupyter notebook and github repository
+<meta property="og:description" content="For associated code, please see the Jupyter notebook in the github repository
 While machine learning has been very successful in image-processing applications, there&rsquo;s still a place for traditional computer vision techniques. One of my hobbies is making timelapse videos by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yue-here.github.io/opticalflow/" /><meta property="article:section" content="posts" />
@@ -14,7 +14,7 @@ While machine learning has been very successful in image-processing applications
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Optical flow timelapse stabiliser"/>
-<meta name="twitter:description" content="For associated code, please see the Jupyter notebook and github repository
+<meta name="twitter:description" content="For associated code, please see the Jupyter notebook in the github repository
 While machine learning has been very successful in image-processing applications, there&rsquo;s still a place for traditional computer vision techniques. One of my hobbies is making timelapse videos by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage."/>
 <meta name="application-name" content="Yue Wu">
 <meta name="apple-mobile-web-app-title" content="Yue Wu"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -30,7 +30,7 @@ While machine learning has been very successful in image-processing applications
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/opticalflow\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  736 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  737 ,
         "url": "https:\/\/yue-here.github.io\/opticalflow\/","datePublished": "2024-02-14T00:00:00+00:00","dateModified": "2024-02-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -104,7 +104,7 @@ While machine learning has been very successful in image-processing applications
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Optical flow timelapse stabiliser</h1><h2 class="single-subtitle">Using computer vision to stabilise timelapse footage</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-02-14">2024-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;736 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-02-14">2024-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;737 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -118,7 +118,7 @@ While machine learning has been very successful in image-processing applications
     <li><a href="#execution-stabilisation">Execution: stabilisation</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>For associated code, please see the Jupyter notebook and <a href="" rel="">github repository</a></p>
+            </div><div class="content" id="content"><p>For associated code, please see the <a href="https://github.com/yue-here/optical-flow-stabilizer/blob/main/optical%20flow%20timelapse%20stabilizer%20tutorial.ipynb" target="_blank" rel="noopener noreffer ">Jupyter notebook</a> in the <a href="https://github.com/yue-here/optical-flow-stabilizer" target="_blank" rel="noopener noreffer ">github repository</a></p>
 <p>While machine learning has been very successful in image-processing applications, there&rsquo;s still a place for traditional computer vision techniques. One of my hobbies is making <a href="https://youtu.be/SA69YDp-wbg" target="_blank" rel="noopener noreffer ">timelapse videos</a> by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage. I have a backlog of timelapse footage that is unwatchable due to excessive shifts of this nature. In the past I&rsquo;ve used the Blender VFX stabilization tool to stabilize on a feature, but this breaks in e.g. day-night cycles or subjects moving in front of the feature. I finally got round to writing my code to do this that doesn&rsquo;t rely on specific feature tracking.</p>
 <center>
 <figure><img src="/unstabilized.gif"/><figcaption>

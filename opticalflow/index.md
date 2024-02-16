@@ -1,6 +1,6 @@
 # Optical flow timelapse stabiliser
 
-For associated code, please see the Jupyter notebook and [github repository]()
+For associated code, please see the [Jupyter notebook](https://github.com/yue-here/optical-flow-stabilizer/blob/main/optical%20flow%20timelapse%20stabilizer%20tutorial.ipynb) in the [github repository](https://github.com/yue-here/optical-flow-stabilizer)
 
 While machine learning has been very successful in image-processing applications, there's still a place for traditional computer vision techniques. One of my hobbies is making [timelapse videos](https://youtu.be/SA69YDp-wbg) by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage. I have a backlog of timelapse footage that is unwatchable due to excessive shifts of this nature. In the past I've used the Blender VFX stabilization tool to stabilize on a feature, but this breaks in e.g. day-night cycles or subjects moving in front of the feature. I finally got round to writing my code to do this that doesn't rely on specific feature tracking.
 

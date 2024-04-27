@@ -4,7 +4,15 @@
         <link>https://yue-here.github.io/posts/</link>
         <description>All Posts | Yue Wu</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yuewu[at]slac.stanford.edu (Yue Wu)</managingEditor>
-            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Wed, 14 Feb 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Fri, 26 Apr 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>UMAP of Chinese glyphs</title>
+    <link>https://yue-here.github.io/chineseumap/</link>
+    <pubDate>Fri, 26 Apr 2024 00:00:00 &#43;0000</pubDate>
+    <author>Yue Wu</author>
+    <guid>https://yue-here.github.io/chineseumap/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Optical flow timelapse stabiliser</title>
     <link>https://yue-here.github.io/opticalflow/</link>
     <pubDate>Wed, 14 Feb 2024 00:00:00 &#43;0000</pubDate>

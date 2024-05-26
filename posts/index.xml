@@ -22,6 +22,15 @@
 While machine learning has been very successful in image-processing applications, there&rsquo;s still a place for traditional computer vision techniques. One of my hobbies is making timelapse videos by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage.]]></description>
 </item>
 <item>
+    <title>Teaching generative AI the structure of Chinese characters</title>
+    <link>https://yue-here.github.io/glyphexplorer/</link>
+    <pubDate>Wed, 14 Feb 2024 00:00:00 &#43;0000</pubDate>
+    <author>Yue Wu</author>
+    <guid>https://yue-here.github.io/glyphexplorer/</guid>
+    <description><![CDATA[For associated code, please see the github repo
+Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;. Characters can also be compounded: 好 (hǎo) meaning &lsquo;good&rsquo;, is constructed from the pictograms for 女 (nǚ), &lsquo;woman&rsquo; and 子 (zǐ), child.]]></description>
+</item>
+<item>
     <title>Chemical Diffusion</title>
     <link>https://yue-here.github.io/chemicaldiffusion/</link>
     <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0000</pubDate>

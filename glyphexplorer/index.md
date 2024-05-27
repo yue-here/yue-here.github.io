@@ -1,6 +1,6 @@
 # Teaching generative AI the structure of Chinese characters
 
-For associated code, please see the [github repo](https://github.com/yue-here/glyffuser)
+_For associated code, please see the [github repo](https://github.com/yue-here/glyffuser). Huge shoutout to my old friend [Daniel Tse](http://overpunch.com/), linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign._
 
 #### Intro
 Chinese characters are pretty cool, and there's a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, 'mountain'. Characters can also be compounded: 好 (hǎo) meaning 'good', is constructed from the pictograms for 女 (nǚ), 'woman' and 子 (zǐ), child. Read into that what you will. Compounds often contain a semantic and a phonetic component. For example, the names of most chemical elements such as the metallic element lithium, 锂 (lǐ) are composed of a semantic radical (⻐, the condensed form of 金 meaning 'metal') and a phonetic component 里 (lǐ) which approximates the 'li' in lithium.

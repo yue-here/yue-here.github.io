@@ -12,8 +12,8 @@
     <pubDate>Sun, 26 May 2024 00:00:00 &#43;0000</pubDate>
     <author>Yue Wu</author>
     <guid>https://yue-here.github.io/glyphexplorer/</guid>
-    <description><![CDATA[For associated code, please see the github repo
-Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;. Characters can also be compounded: 好 (hǎo) meaning &lsquo;good&rsquo;, is constructed from the pictograms for 女 (nǚ), &lsquo;woman&rsquo; and 子 (zǐ), child.]]></description>
+    <description><![CDATA[For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;.]]></description>
 </item>
 <item>
     <title>Optical flow timelapse stabiliser</title>

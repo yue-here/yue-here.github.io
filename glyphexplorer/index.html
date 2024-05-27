@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Teaching generative AI the structure of Chinese characters - Yue Wu</title><meta name="Description" content="Yue Wu"><meta property="og:title" content="Teaching generative AI the structure of Chinese characters" />
-<meta property="og:description" content="For associated code, please see the github repo
-Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;. Characters can also be compounded: 好 (hǎo) meaning &lsquo;good&rsquo;, is constructed from the pictograms for 女 (nǚ), &lsquo;woman&rsquo; and 子 (zǐ), child." />
+<meta property="og:description" content="For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yue-here.github.io/glyphexplorer/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-05-26T00:00:00+00:00" />
@@ -14,8 +14,8 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Teaching generative AI the structure of Chinese characters"/>
-<meta name="twitter:description" content="For associated code, please see the github repo
-Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;. Characters can also be compounded: 好 (hǎo) meaning &lsquo;good&rsquo;, is constructed from the pictograms for 女 (nǚ), &lsquo;woman&rsquo; and 子 (zǐ), child."/>
+<meta name="twitter:description" content="For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;."/>
 <meta name="application-name" content="Yue Wu">
 <meta name="apple-mobile-web-app-title" content="Yue Wu"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -30,7 +30,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/glyphexplorer\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  2908 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  2932 ,
         "url": "https:\/\/yue-here.github.io\/glyphexplorer\/","datePublished": "2024-05-26T00:00:00+00:00","dateModified": "2024-05-26T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -104,7 +104,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Teaching generative AI the structure of Chinese characters</h1><h2 class="single-subtitle">Introducing the &#39;Glyffuser&#39;</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2908 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2932 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -131,7 +131,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>For associated code, please see the <a href="https://github.com/yue-here/glyffuser" target="_blank" rel="noopener noreffer ">github repo</a></p>
+            </div><div class="content" id="content"><p><em>For associated code, please see the <a href="https://github.com/yue-here/glyffuser" target="_blank" rel="noopener noreffer ">github repo</a>. Huge shoutout to my old friend <a href="http://overpunch.com/" target="_blank" rel="noopener noreffer ">Daniel Tse</a>, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.</em></p>
 <h4 id="intro">Intro</h4>
 <p>Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;. Characters can also be compounded: 好 (hǎo) meaning &lsquo;good&rsquo;, is constructed from the pictograms for 女 (nǚ), &lsquo;woman&rsquo; and 子 (zǐ), child. Read into that what you will. Compounds often contain a semantic and a phonetic component. For example, the names of most chemical elements such as the metallic element lithium, 锂 (lǐ) are composed of a semantic radical (⻐, the condensed form of 金 meaning &lsquo;metal&rsquo;) and a phonetic component 里 (lǐ) which approximates the &rsquo;li&rsquo; in lithium.</p>
 <p>I&rsquo;ve been interested for a while in how Chinese characters might be explored using machine learning. Can we teach a model to understand how they are structured from pictures and definitions alone? Let&rsquo;s talk about a couple of ways of engaging with this, starting with relatively simple ML models and moving towards state-of-the-art technologies.</p>

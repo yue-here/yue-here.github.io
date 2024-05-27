@@ -5,13 +5,14 @@
         <description>All Posts | Yue Wu</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yuewu[at]slac.stanford.edu (Yue Wu)</managingEditor>
             <webMaster>yuewu[at]slac.stanford.edu (Yue Wu)</webMaster><lastBuildDate>Sun, 26 May 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Teaching generative AI the structure of Chinese characters</title>
+    <title>Teaching generative AI to write Chinese</title>
     <link>https://yue-here.github.io/glyphexplorer/</link>
     <pubDate>Sun, 26 May 2024 00:00:00 &#43;0000</pubDate>
     <author>Yue Wu</author>
     <guid>https://yue-here.github.io/glyphexplorer/</guid>
     <description><![CDATA[For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
-Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;.]]></description>
+In this article, we build a text to image AI that learns Chinese characters in the same way humans do - by understanding what their components mean.
+Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode.]]></description>
 </item>
 <item>
     <title>Optical flow timelapse stabiliser</title>

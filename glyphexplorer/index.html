@@ -32,7 +32,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/glyphexplorer\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3372 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3456 ,
         "url": "https:\/\/yue-here.github.io\/glyphexplorer\/","datePublished": "2024-05-26T00:00:00+00:00","dateModified": "2024-05-26T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -106,8 +106,8 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Teaching generative AI to write Chinese</h1><h2 class="single-subtitle">Introducing the &#39;Glyffuser&#39;</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3372 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3456 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -123,6 +123,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
     <li><a href="#conditional-diffusion-model">Conditional diffusion model</a></li>
     <li><a href="#learning-the-structure-of-chinese-characters">Learning the structure of Chinese characters</a></li>
     <li><a href="#outro">Outro</a></li>
+    <li><a href="#test-the-models-here">Test the models here</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p><em>For associated code, please see the <a href="https://github.com/yue-here/glyffuser" target="_blank" rel="noopener noreffer ">github repo</a>. Huge shoutout to my old friend <a href="http://overpunch.com/" target="_blank" rel="noopener noreffer ">Daniel Tse</a>, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.</em></p>
@@ -414,7 +415,17 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 
 </center>
 <h2 id="outro">Outro</h2>
-<p>So can we teach a model to understand how Chinese characters are structured from pictures and definitions alone? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an update where I add pronounciations to the character captions and see if this can be fixed!</p>
+<p>So can we teach a model to understand how Chinese characters are structured from pictures and definitions alone? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an update where I add pronounciations to the character captions and see if this can be fixed!
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="test-the-models-here">Test the models here</h2>
+<p>If you want to try out the conditional glyffuser, the easiest way is to get the demo repo with <code>git clone https://github.com/yue-here/glyffuser</code>, make a python environment with <code>requirements.txt</code> (you may need to set it up for your GPU and jupyter) then run the <code>glyffuser inference.ipynb</code> notebook, which will summon the trained model from my huggingface repo.</p>
+<p>Failing that, I&rsquo;ve made this applet that will run the inference, but please be patient as it&rsquo;s quite slow (around a minute per step).
+<script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.31.5/gradio.js">
+</script>
+<gradio-app space="yuewu/glyffuser"></gradio-app></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

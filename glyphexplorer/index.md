@@ -218,4 +218,14 @@ Now that we understand better how the model works, let's take another look at pr
 
 ## Outro
 So can we teach a model to understand how Chinese characters are structured from pictures and definitions alone? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an update where I add pronounciations to the character captions and see if this can be fixed!
+<br>
+<br>
+<br>
+<br>
 
+
+## Test the models here
+If you want to try out the conditional glyffuser, the easiest way is to get the demo repo with `git clone https://github.com/yue-here/glyffuser`, make a python environment with `requirements.txt` (you may need to set it up for your GPU and jupyter) then run the `glyffuser inference.ipynb` notebook, which will summon the trained model from my huggingface repo.
+
+Failing that, I've made this applet that will run the inference, but please be patient as it's quite slow (around a minute per step).
+{{< glyffuser >}}

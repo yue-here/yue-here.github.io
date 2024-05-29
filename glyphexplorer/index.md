@@ -57,7 +57,7 @@ This allows us to do some interesting things like morph smoothly between charact
 
 <center>
 <video width="128" height="128" autoplay loop muted>
-  <source src="/VAE_interpolation.mp4" type="video/mp4">
+  <source src="/VAE_interpolation_small.mp4" type="video/mp4">
 </video>
 </center>
 
@@ -121,7 +121,9 @@ As the process is relatively expensive, the large models mentioned above general
 Below is a video of characters generated during each training epoch from a model trained for 100 epochs on the same Chinese glyph dataset used before. Compared to the VAE model discussed in the last part, we can see the unconditional diffusion model is much better at capturing the hierarchical structure of characters at different levels, and learns this very early on in the training process.
 
 <center>
-{{< figure src="/unconditional_glyffuser_training.gif">}}
+<video autoplay loop muted>
+  <source src="/unconditional_glyffuser_training.mp4" type="video/mp4">
+</video>
 </center>
 
 ## Conditional diffusion model
@@ -231,6 +233,9 @@ Failing that, I've made this applet that will run the inference, but please be p
 
 ## Bonus content
 Here's a training video from a version of the glyffuser trained on the ancient Chinese writing known as [seal script](https://en.wikipedia.org/wiki/Seal_script):
+
 <center>
-{{< figure src="/sealscript_training.gif">}}
+<video autoplay loop muted>
+  <source src="/sealscript_training.mp4" type="video/mp4">
+</video>
 </center>

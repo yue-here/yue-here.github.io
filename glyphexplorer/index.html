@@ -191,7 +191,7 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 <p>This allows us to do some interesting things like morph smoothly between characters by interpolating between vectors in latent space:</p>
 <center>
 <video width="128" height="128" autoplay loop muted>
-  <source src="/VAE_interpolation.mp4" type="video/mp4">
+  <source src="/VAE_interpolation_small.mp4" type="video/mp4">
 </video>
 </center>
 <p>For some datasets such as faces or organic molecules, VAEs can be used to generate convincing new samples simply by moving around in the latent space. However, this is a dead end for us - the intermediate steps are clearly not valid Chinese characters, and there is no clear way of accessing the underlying structure of the distribution do so. This gives us a not-so-elegant segue to the generative modality <em>du jour</em>: diffusion models.</p>
@@ -294,9 +294,9 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 </ol>
 <p>Below is a video of characters generated during each training epoch from a model trained for 100 epochs on the same Chinese glyph dataset used before. Compared to the VAE model discussed in the last part, we can see the unconditional diffusion model is much better at capturing the hierarchical structure of characters at different levels, and learns this very early on in the training process.</p>
 <center>
-<figure><img src="/unconditional_glyffuser_training.gif"/>
-</figure>
-
+<video autoplay loop muted>
+  <source src="/unconditional_glyffuser_training.mp4" type="video/mp4">
+</video>
 </center>
 <h2 id="conditional-diffusion-model">Conditional diffusion model</h2>
 <p>Now that we have confirmed we can generate convincing Chinese characters a diffusion model, let&rsquo;s train a text-to-image model conditioned on the English definitions of each character. If the model correctly learns how the English definition relates to the Chinese character, it should be able to &lsquo;understand&rsquo; the rules for how characters are constructed and generate characters that &lsquo;give the right vibe&rsquo; for a given english prompt.</p>
@@ -427,9 +427,9 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 <h2 id="bonus-content">Bonus content</h2>
 <p>Here&rsquo;s a training video from a version of the glyffuser trained on the ancient Chinese writing known as <a href="https://en.wikipedia.org/wiki/Seal_script" target="_blank" rel="noopener noreffer ">seal script</a>:</p>
 <center>
-<figure><img src="/sealscript_training.gif"/>
-</figure>
-
+<video autoplay loop muted>
+  <source src="/sealscript_training.mp4" type="video/mp4">
+</video>
 </center></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

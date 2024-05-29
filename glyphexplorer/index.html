@@ -32,7 +32,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/glyphexplorer\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3456 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3478 ,
         "url": "https:\/\/yue-here.github.io\/glyphexplorer\/","datePublished": "2024-05-26T00:00:00+00:00","dateModified": "2024-05-26T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -106,7 +106,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Teaching generative AI to write Chinese</h1><h2 class="single-subtitle">Introducing the &#39;Glyffuser&#39;</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3456 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3478 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -124,6 +124,7 @@ Intro Chinese characters are pretty cool, and there&rsquo;s a lot of them; aroun
     <li><a href="#learning-the-structure-of-chinese-characters">Learning the structure of Chinese characters</a></li>
     <li><a href="#outro">Outro</a></li>
     <li><a href="#test-the-models-here">Test the models here</a></li>
+    <li><a href="#bonus-content">Bonus content</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p><em>For associated code, please see the <a href="https://github.com/yue-here/glyffuser" target="_blank" rel="noopener noreffer ">github repo</a>. Huge shoutout to my old friend <a href="http://overpunch.com/" target="_blank" rel="noopener noreffer ">Daniel Tse</a>, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.</em></p>
@@ -293,9 +294,6 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 </ol>
 <p>Below is a video of characters generated during each training epoch from a model trained for 100 epochs on the same Chinese glyph dataset used before. Compared to the VAE model discussed in the last part, we can see the unconditional diffusion model is much better at capturing the hierarchical structure of characters at different levels, and learns this very early on in the training process.</p>
 <center>
-<!-- <figure><img src="/uncon_diffusion_sample.png"/>
-</figure>
- -->
 <figure><img src="/unconditional_glyffuser_training.gif"/>
 </figure>
 
@@ -426,7 +424,13 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.31.5/gradio.js">
 </script>
 <gradio-app space="yuewu/glyffuser"></gradio-app></p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="bonus-content">Bonus content</h2>
+<p>Here&rsquo;s a training video from a version of the glyffuser trained on the ancient Chinese writing known as <a href="https://en.wikipedia.org/wiki/Seal_script" target="_blank" rel="noopener noreffer ">seal script</a>:</p>
+<center>
+<figure><img src="/sealscript_training.gif"/>
+</figure>
+
+</center></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

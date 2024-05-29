@@ -235,7 +235,7 @@ Failing that, I've made this applet that will run the inference, but please be p
 Here's a training video from a version of the glyffuser trained on the ancient Chinese writing known as [seal script](https://en.wikipedia.org/wiki/Seal_script):
 
 <center>
-<video autoplay loop muted>
+<video width=100% autoplay loop muted>
   <source src="/sealscript_training.mp4" type="video/mp4">
 </video>
 </center>

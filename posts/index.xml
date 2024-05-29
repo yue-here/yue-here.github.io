@@ -6,10 +6,10 @@
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yue.wu.mail[at]gmail.com (Yue Wu)</managingEditor>
             <webMaster>yue.wu.mail[at]gmail.com (Yue Wu)</webMaster><lastBuildDate>Sun, 26 May 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Teaching an AI to invent new Chinese characters</title>
-    <link>https://yue-here.github.io/gyffuser/</link>
+    <link>https://yue-here.github.io/glyffuser/</link>
     <pubDate>Sun, 26 May 2024 00:00:00 &#43;0000</pubDate>
     <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/gyffuser/</guid>
+    <guid>https://yue-here.github.io/glyffuser/</guid>
     <description><![CDATA[For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
 In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt.]]></description>
 </item>

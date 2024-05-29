@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Teaching an AI to invent new Chinese characters - Yue Wu</title><meta name="Description" content="Yue Wu"><meta property="og:title" content="Teaching an AI to invent new Chinese characters" />
+<meta property="og:description" content="For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yue-here.github.io/glyffuser/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-26T00:00:00+00:00" /><meta property="og:site_name" content="Yue Wu" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Teaching an AI to invent new Chinese characters"/>
+<meta name="twitter:description" content="For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt."/>
+<meta name="application-name" content="Yue Wu">
+<meta name="apple-mobile-web-app-title" content="Yue Wu"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://yue-here.github.io/glyffuser/" /><link rel="prev" href="https://yue-here.github.io/opticalflow/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Teaching an AI to invent new Chinese characters",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/yue-here.github.io\/glyffuser\/"
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3493 ,
+        "url": "https:\/\/yue-here.github.io\/glyffuser\/","datePublished": "2024-05-26T00:00:00+00:00","dateModified": "2024-05-26T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Yue Wu"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Yue Wu"><span class="header-title-pre"><i class='fa-solid fa-vial fa-fw' aria-hidden='true'></i></span>Yue Wu</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/index.html"> Home </a><a class="menu-item" href="/bio/"> Bio </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/research/"> Research </a><a class="menu-item" href="/personal/"> Personal </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Yue Wu"><span class="header-title-pre"><i class='fa-solid fa-vial fa-fw' aria-hidden='true'></i></span>Yue Wu</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/index.html" title="">Home</a><a class="menu-item" href="/bio/" title="">Bio</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/research/" title="">Research</a><a class="menu-item" href="/personal/" title="">Personal</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Teaching an AI to invent new Chinese characters</h1><h2 class="single-subtitle">Introducing the &#39;Glyffuser&#39;</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3493 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#dataset">Dataset</a></li>
+    <li><a href="#visualise-the-character-set-in-2d">Visualise the character set in 2D</a></li>
+    <li><a href="#variational-autoencoder">Variational autoencoder</a></li>
+    <li><a href="#unconditional-diffusion-model">Unconditional diffusion model</a></li>
+    <li><a href="#conditional-diffusion-model">Conditional diffusion model</a></li>
+    <li><a href="#learning-the-structure-of-chinese-characters">Learning the structure of Chinese characters</a></li>
+    <li><a href="#outro">Outro</a></li>
+    <li><a href="#test-the-models-here">Test the models here</a></li>
+    <li><a href="#bonus-content">Bonus content</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><em>For associated code, please see the <a href="https://github.com/yue-here/glyffuser" target="_blank" rel="noopener noreffer ">github repo</a>. Huge shoutout to my old friend <a href="http://overpunch.com/" target="_blank" rel="noopener noreffer ">Daniel Tse</a>, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.</em></p>
+<center>
+<figure><img src="/glyffuser%20grabber.png"/>
+</figure>
+
+<p>In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt.</p>
+</center>
+<h2 id="intro">Intro</h2>
+<p>Chinese characters are pretty cool, and there&rsquo;s a lot of them; around 21,000 are represented in unicode. Interestingly, they encode meaning in multiple ways. Some are simple pictures of things - 山 (shān) means, as you might be able to guess, &lsquo;mountain&rsquo;. Most characters are compounds, however: 好 (hǎo) meaning &lsquo;good&rsquo;, is constructed from the pictograms for 女 (nǚ), &lsquo;woman&rsquo; and 子 (zǐ), child. Read into that what you will. Compounds often contain a semantic and a phonetic component; these subcomponents are known as radicals. For example, the names of most metallic chemical elements such as lithium, 锂 (lǐ) are composed of a semantic radical (⻐, the condensed form of 金 (jīn) meaning &lsquo;metal&rsquo;) and a phonetic component 里 (lǐ, meaning unrelated) which approximates the &rsquo;li&rsquo; sound of lithium.</p>
+<p>I&rsquo;ve been interested for a while in how Chinese characters might be explored using machine learning. Can we teach a model to understand how they are structured from pictures and definitions alone? Can it then invent new characters? (Spoiler: yes) Let&rsquo;s talk about a couple of ways of engaging with this, starting with relatively simple ML models and moving towards state-of-the-art technologies.</p>
+<h2 id="dataset">Dataset</h2>
+<p>First, we need a dataset consisting of images of as many known Chinese characters as possible. The unicode standard is a convenient method of indexing a large proportion of known Chinese characters. Fonts provide a specific way of representing characters, in the form of distinct glyphs. Fonts have different levels of completeness, so choosing one that contained as many characters as possible for a large and diverse dataset was important.</p>
+<p>The main resources used for generating the dataset:</p>
+<ul>
+<li>The unicode CJK Unified Ideographs block (4E00–9FFF) of 20,992 Chinese characters</li>
+<li>Google fonts (<a href="https://fonts.google.com/noto/specimen/Noto&#43;Sans" target="_blank" rel="noopener noreffer ">Noto Sans</a> and others)</li>
+<li>English definitions from the unihan database (<a href="https://github.com/unicode-org/unihan-database/blob/main/kDefinition.txt" target="_blank" rel="noopener noreffer ">kDefinition.txt</a>) - this becomes useful later</li>
+</ul>
+<p>Let&rsquo;s <a href="https://github.com/yue-here/glyffuser/blob/main/Unihan%20glyph%20generator.ipynb" target="_blank" rel="noopener noreffer ">make the dataset</a> by saving the glyphs as pictures in the square 2<sup>n</sup>×2<sup>n</sup> format favoured by ML convention. We want to keep detail while minimizing size - I found that 64×64 and 128×128 worked well. Since we don&rsquo;t need colour, we can get away with a single channel - otherwise we&rsquo;d use a 3 channel RGB image of size 3×128×128.</p>
+<h2 id="visualise-the-character-set-in-2d">Visualise the character set in 2D</h2>
+<p>(<a href="https://github.com/yue-here/glyffuser/blob/main/glyph%20explorer.ipynb" target="_blank" rel="noopener noreffer ">Jupyter notebook</a>) First let&rsquo;s try to map the space with a dimensional reduction. UMAP works well here. (hover/tap the points to show each character in the plot.) Distinct clusters emerge - the largest cluster on the left represents the &ldquo;lefty-righty&rdquo; characters (to use the technical term), while the second largest cluster on the right represents &ldquo;uppy-downy&rdquo; characters. Tighter clusters/subclusters tend to correspond to characters that share the same radical - the small streak at the very top right is an almost literal leper colony of characters with the 疒 radical, indicating sickness. (<strong>Hover over/tap points to see the characters</strong>)</p>
+<p>
+  
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+<div id="/umap.json" class="plotly" style="width: 100%;"></div>
+<script>
+Plotly.d3.json("/umap.json", function(err, fig) {
+    Plotly.plot('\/umap.json', fig.data, fig.layout, {responsive: true});
+});
+</script>
+</p>
+<h2 id="variational-autoencoder">Variational autoencoder</h2>
+<p>(<a href="https://github.com/yue-here/glyffuser/blob/main/glyph%20explorer.ipynb" target="_blank" rel="noopener noreffer ">Jupyter notebook</a>) Let&rsquo;s try using an older generative ML technology, the variational autoencoder (VAE), to model the underlying distribution of Chinese characters. The dimensionality of the original input boils down to a vector of length 64×64=4096, i.e. one value for each pixel. The VAE architecture works by using convolutional layers to reduce the dimensionality of the input over several steps (the &rsquo;encoder&rsquo;), then using a reverse convolution to increase the dimensionality back to the original (the &lsquo;decoder&rsquo;). The network is trained on its ability to output a match to the original.</p>
+<p>The key intuition is that not all of the pixels in the images contain valuable information, so they can <em>somehow</em> be compressed to a smaller (lower-dimensional) vector. This is known as the &rsquo;latent space&rsquo;. By passing our training images through a bottleneck the size of the latent space and then training the model to reconstruct the full original image, we create a &lsquo;decoder&rsquo; that can translate any vector in the latent space to a full sized image. In this case, we go from 64×64=4096 to a latent space of size 256.</p>
+<p>By passing images from our original dataset though the VAE again, we can see that the VAE has learnt a good latent representation of our glyphs:</p>
+<center>
+<figure><img src="/VAE_reconstruction.png"/>
+</figure>
+
+</center>
+<p>Aside: Training the VAE has an extra subtlety compared to a vanilla autoencoder which is only graded on reconstruction. Our VAE loss function consists of not just reconstruction loss, but also the Kullback–Leibler divergence, which is a measure of distance between two probability distributions. In this case, we want to minimize the distance between the learned distribution of Chinese glyphs and the normal distribution N(0,I). This pushes the latent distribution from &lsquo;whatever it wants to be&rsquo; towards a normal distribution, which makes sampling and traversing the latent space easier.</p>
+<p>We can compare the latent space learnt by the VAE by passing the dataset through the VAE encoder only, generating a dataset of vectors in the latent space. We can then apply the same UMAP visualisation as before. While the uppy-downy and righty-lefty clusters from before still exist, you can see that the points have all been pushed closer to a (2D) normal distribution. Intuitively, adjacent points in this distribution are more likely to be similar - it&rsquo;s &lsquo;smoother&rsquo;.</p>
+<p>
+
+
+<div id="/umap_vae.json" class="plotly" style="width: 100%;"></div>
+<script>
+Plotly.d3.json("/umap_vae.json", function(err, fig) {
+    Plotly.plot('\/umap_vae.json', fig.data, fig.layout, {responsive: true});
+});
+</script>
+</p>
+<p>We can interact with the latent space via the encoder and decoder components of our trained VAE. For example, we can perform bilinear interpolation between 4 characters. We obtain the latent vector for each one by using the VAE encoder as before, then interpolate the intermediate vectors and decode them to images with VAE decoder.</p>
+<center>
+<figure><img src="/VAE_grid_interpolation.png"/>
+</figure>
+
+</center>
+<p>This allows us to do some interesting things like morph smoothly between characters by interpolating between vectors in latent space:</p>
+<center>
+<video width="128" height="128" autoplay loop muted>
+  <source src="/VAE_interpolation_small.mp4" type="video/mp4">
+</video>
+</center>
+<p>For some datasets such as faces or organic molecules, VAEs can be used to generate convincing new samples simply by moving around in the latent space. However, this is a dead end for us - the intermediate steps are clearly not valid Chinese characters, and there is no clear way of accessing the underlying structure of the distribution do so. This gives us a not-so-elegant segue to the generative modality <em>du jour</em>: diffusion models.</p>
+<h2 id="unconditional-diffusion-model">Unconditional diffusion model</h2>
+<p>Initially models designed to remove noise from images, it was found that when applied to pure noise, <a href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener noreffer ">denoising diffusion models</a> could generate entirely new images of types they were trained on. Even more excitingly, when trained with text conditioning, they could then generate images related to a provided text prompt. This led the proliferation of text-to-image models starting around late 2022 like Dall-E, Midjourney, Imagen, and Stable Diffusion. These models tend to be trained on a huge number of text-image pairs harvested <em>en masse</em> from the internet. The training cost of these models is generally on the order of 6 figures (USD) or more.</p>
+<p>I was curious if the same type of architecture could be used in a simplified form, with a smaller dataset, to achieve an interesting result like generating convincing Chinese characters. Of course, I didn&rsquo;t have 6 figures (USD) to spend on this - everything was done on my home rig with a used 3090 bought for ~$700 (the best VRAM Gb/$ value in 2023/4!).</p>
+<p>The first step was to implement an unconditional model trained on our existing dataset, to see if convincing generations could be achieved at all. Unconditional simply means that the model is trained to generate similar things to the data it sees, without any other guidance. Those playing the home game can follow along with the <a href="https://github.com/yue-here/glyffuser/blob/main/glyffuser%20unconditional.ipynb" target="_blank" rel="noopener noreffer ">associated notebook here</a></p>
+<p>Most image diffusion models use some variant of the <a href="https://arxiv.org/abs/1505.04597" target="_blank" rel="noopener noreffer ">U-net</a> architecture, initially developed for segmenting biomedical images. This network turns out to be a good choice for diffusion models, where we need to train a model that can predict noise that can then be subtracted to generate recognizable images. We also need a noise scheduler that controls the mathematics of how noise is added during the training process. To save time in implementing our own model from scratch, we can use Huggingface&rsquo;s handy <code>diffusers</code> library with the <code>UNet2DModel</code> for the Unet and the <code>DDPMScheduler</code> as the noise scheduler. This makes the core of the code relatively straightforward:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">diffusers</span> <span class="kn">import</span> <span class="n">UNet2DModel</span><span class="p">,</span> <span class="n">DDPMScheduler</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the UNet model</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">UNet2DModel</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sample_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>  <span class="c1"># the target image resolution</span>
+</span></span><span class="line"><span class="cl">    <span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># the number of input channels</span>
+</span></span><span class="line"><span class="cl">    <span class="n">out_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># the number of output channels</span>
+</span></span><span class="line"><span class="cl">    <span class="n">layers_per_block</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># how many ResNet layers to use per UNet block</span>
+</span></span><span class="line"><span class="cl">    <span class="n">block_out_channels</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>  <span class="c1"># the number of output channels for each UNet block</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Define the UNet architecture</span>
+</span></span><span class="line"><span class="cl">    <span class="n">down_block_types</span><span class="o">=</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AttnDownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">up_block_types</span><span class="o">=</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AttnUpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize the noise scheduler</span>
+</span></span><span class="line"><span class="cl"><span class="n">noise_scheduler</span> <span class="o">=</span> <span class="n">DDPMScheduler</span><span class="p">(</span><span class="n">num_train_timesteps</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As the process is relatively expensive, the large models mentioned above generally train on some kind of lower dimensional space then coupled with a method to later obtain high resolution images. For example, Google&rsquo;s Imagen uses a sequence of conditioned superresolution networks, while Stable Diffusion is built on the idea of latent diffusion, where the final images are decoded from a lower-dimensional latent space. This step is omitted here as we have enough compute to train the model in the relatively small native size (128×128) of the data. The remainder of the code is mostly plumbing to get the data to the model. I did run into a couple of traps here though:</p>
+<ol>
+<li>
+<p>The scheduler for running inference on a diffusion model need not be the same as the one used for training, and many good schedulers have been developed by the community that can give excellent results in 20-50 steps rather than the 100s that might be needed with the standard <code>DDPMScheduler()</code>. For our purposes, &ldquo;DPM++ 2M&rdquo; or <code>DPMSolverMultistepScheduler()</code> in the Diffusers library worked very well.</p>
+</li>
+<li>
+<p>Dataloader shuffling is essential with such small datasets. I ran into a bug that took weeks to diagnose: sampling every epoch led to overfitting (lower training loss) with much poorer model performance as assessed by eye. The same model sampled every 10 epochs had no such problems. Test showed model parameters before and after sampling were identical. After much suffering, the problem was found to be caused by this inference call to the Diffusers pipeline I&rsquo;d cribbed from Huggingface:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">images</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                  <span class="n">generator</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">seed</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">num_inference_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">)</span><span class="o">.</span><span class="n">images</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Setting <code>generator=torch.manual_seed(config.seed)</code> resets the seed for the whole training loop, meaning the model will see training samples in the same order every reset. This allowed the model to learn the sample order as an unintended side effect, leading to overfitting and degraded performance. Setting a generator on the CPU instead allows the training to continue unmolested: <code>generator=torch.Generator(device='cpu').manual_seed(config.seed)</code></p>
+</li>
+</ol>
+<p>Below is a video of characters generated during each training epoch from a model trained for 100 epochs on the same Chinese glyph dataset used before. Compared to the VAE model discussed in the last part, we can see the unconditional diffusion model is much better at capturing the hierarchical structure of characters at different levels, and learns this very early on in the training process.</p>
+<center>
+<video width=100% autoplay loop muted>
+  <source src="/unconditional_glyffuser_training.mp4" type="video/mp4">
+</video>
+</center>
+<h2 id="conditional-diffusion-model">Conditional diffusion model</h2>
+<p>Now that we have confirmed we can generate convincing Chinese characters a diffusion model, let&rsquo;s train a text-to-image model conditioned on the English definitions of each character. If the model correctly learns how the English definition relates to the Chinese character, it should be able to &lsquo;understand&rsquo; the rules for how characters are constructed and generate characters that &lsquo;give the right vibe&rsquo; for a given english prompt.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The concept of &lsquo;conditioning&rsquo; may seem mysterious but here it boils down to working out a way to represent the English text as a vector, then adding that vector to another vector representing the image during the training process.</div>
+        </div>
+    </div>
+<p>In a previous blog post, I discussed finetuning Stable Diffusion. However that seemed like the wrong approach here - the pretraining of SD wouldn&rsquo;t do much for us since the types of images we want to generate are unlikely to be well represented in their training set. So which framework to use?</p>
+<p>In a misguided attempt to save effort, I first tried Assembly AI&rsquo;s <a href="https://github.com/AssemblyAI-Examples/MinImagen" target="_blank" rel="noopener noreffer ">minimagen</a> implementation, as an ostensibly simple conditional diffusion framework. It rapidly (but not rapidly enough) became clear that even after extensive debugging that this was demo code, not fully functional. I moved on to lucidrains&rsquo; much cleaner <a href="https://github.com/lucidrains/imagen-pytorch" target="_blank" rel="noopener noreffer ">imagen</a> implementation and trained some variants in unconditional mode, matching architectures as best as I could with my previous model (within the constraints of the framework), but I couldn&rsquo;t never replicate the same quality - I suspect this was due to some differences in the layer architecture I couldn&rsquo;t identify.</p>
+<p><em>&ldquo;You could not live with your own failure, where did that bring you? Back to me.&rdquo;</em></p>
+<p>In the end I decided I had to implement the model myself, something I&rsquo;d been studiously avoiding. While huggingface&rsquo;s <code>UNet2DConditionModel()</code> provides a framework for this, I was unable to find good documentation and so ended up having to scour the codebase directly. My observations below on what is needed, in case you dear reader want to take up this foolhardy task. Follow along with the <a href="https://github.com/yue-here/glyffuser/blob/main/glyffuser%20conditional.ipynb" target="_blank" rel="noopener noreffer ">notebook here</a>.</p>
+<p>The <code>UNet2DConditionModel()</code> is able to be conditioned on either classes (dog, car, house, etc.), or embeddings (vectors from a latent space). For text-to-image, we are using embeddings. I decided to take a page out of Google&rsquo;s book and use LLM embeddings directly for conditioning, as Imagen does. Contrast this with e.g. Dall-E 2, which uses CLIP embeddings trained on image-caption pairs. What Google found with Imagen was that conditioning on text embeddings from an LLM such as their T5 model worked just as well or even better than the CLIP model trained on image-caption pairs. This is very handy for us, since available CLIP-type embeddings would likely be inappropriate for our use case reasons discussed above. In practice, we can call down existing T5 methods from Huggingface&rsquo;s <code>transformers</code> library and pass it some text; it will give us back a fixed-length vector embedding, imbued with LLM magic.</p>
+<p>Here&rsquo;s the core of the conditional UNet model:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">diffusers</span> <span class="kn">import</span> <span class="n">UNet2DConditionModel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the conditional UNet model</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">UNet2DConditionModel</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sample_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">out_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">layers_per_block</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">block_out_channels</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">addition_embed_type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span><span class="p">,</span> <span class="c1"># Make it conditional</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cross_attention_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encoder_hid_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>  <span class="c1"># the hidden dimension of the encoder</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encoder_hid_dim_type</span><span class="o">=</span><span class="s2">&#34;text_proj&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">down_block_types</span><span class="o">=</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;CrossAttnDownBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;DownBlock2D&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">up_block_types</span><span class="o">=</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;CrossAttnUpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;UpBlock2D&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We specify the nature of the conditioning vector being passed to the model via some extra arguments. We also need to introduce some extra plumbing. First, we now need text captions for each training image, which we obtained from the unihan definitions database (way back at the <a href="#dataset" rel="">top of this article</a>). We then need a collator function that helps the dataloader return LLM embeddings from the text caption, as well as an attention mask for the embedding. Finally, we write our own pipeline, <code>GlyffuserPipeline()</code> (a subclass of <code>DiffusionPipeline()</code>) that can correctly pass the text embeddings and masks during inference. From there, we can train it in the same way as the previous model.</p>
+<h2 id="learning-the-structure-of-chinese-characters">Learning the structure of Chinese characters</h2>
+<p>Now that we&rsquo;ve trained the conditional model, how can we know what the model has learnt about how Chinese characters are constructed? One way is to probe it with different prompts and look at how the sampling steps progress. In the <a href="#intro" rel="">intro</a> I mentioned that most characters contain semantic or phonetic radicals, and the <a href="#visualise-the-character-set-in-2d" rel="">UMAP</a> shows the distribution of major character types.</p>
+<p>If we obtain a list of most common Chinese radicals from, say, an <a href="https://en.wikipedia.org/wiki/Kangxi_radical" target="_blank" rel="noopener noreffer ">18th century Chinese dictionary</a> we can probe the model with prompts corresponding to the English meaning of each radical and see what is activated. Below we take the <em>first</em> sampling step (NB: in the animation in the previous section, we show <em>training</em> steps but each frame is <em>sampled</em> for 50 steps. Don&rsquo;t get these confused!) for English text prompts corresponding to the most frequently appearing 36 Chinese radicals (not used in the prompt but shown in parentheses for comparison):</p>
+<center>
+<figure><img src="/36%20common%20radicals%201%20step.png"/>
+</figure>
+
+</center>
+<p>Very interesting! We see in most cases the corresponding radical is directly activated in the part of the character it usually resides, even though the rest of the character is very noisy. We can infer that the english prompt is strongly tied <em>in meaning</em>, i.e. semantically, to characters that contain this radical.</p>
+<p>The 虫 radical means &ldquo;bug&rdquo; and is quite strongly activated by the prompt &lsquo;insect&rsquo; as it is used in bug-related characters (fly: 蝇, butterfly: 蝴蝶, earthworm: 蚯蚓). However, the 忄(heart) radical is not activated by &ldquo;heart&rdquo; (its literal meaning) as its <em>semantic</em> meaning is linked to the historical belief that thoughts and emotions arise from the physical heart (memory: 忆, afraid: 怕, fast: 快). Can we activate this radical by changing our prompt?</p>
+<center>
+<figure><img src="/steps%20probe.png"/>
+</figure>
+
+</center>
+<p>The picture shows sequential sampling (i.e. denoising) steps on the same prompt. While at step 1 we see the model faking toward 忄, it rapidly switches to having a 心 at the bottom. If you can read Chinese, you&rsquo;ll already know why this is: 忄 is actually an alternative form of 心, which is standalone character for heart and can also be used as a bottom radical. Characters with this radical are also linked to thoughts and feelings, e.g. 念 (to miss) and 想 (to think).</p>
+<p>Notably, we can&rsquo;t access the phonetic component in this model as we haven&rsquo;t included any information on Chinese pronunciation in the training process. Can we, however, generate new characters using semantic components? Let&rsquo;s try:</p>
+<center>
+<figure><img src="/a%20mental%20illness.png"/>
+</figure>
+
+</center>
+<p>We can! We have both the components for &lsquo;sickness&rsquo; and &rsquo;thoughts/feelings&rsquo; in this character. The overall structure of this character likely draws from characters such as 痣 (zhì, a mole/mark on the skin) in the training set, but in 痣 the 志, also pronounced zhì, is a phonetic component and has no semantic significance. Of course, this is a cherry-picked example. What happens if we try to activate two radicals that prefer to live in the same place? If we provoke a conflict by prompting &ldquo;a sickness of fire&rdquo;, for example, we get this:</p>
+<center>
+<figure><img src="/a%20sickness%20of%20fire.png"/>
+</figure>
+
+</center>
+<p>You can see that the model initially tries to place 火 on the left side of the square. By step 3, we can see the sickness radical 疒 also trying to form. As the sampling converges, however, neither concept is strong enough to dominate so the model resorts to enforcing some local structure out of the noise, with the overall character looking not at all convincing.</p>
+<p>Now that we understand better how the model works, let&rsquo;s take another look at previous grid and take it all the way up to 50 sampling steps. You may wonder why we never generate the base character, always the radical. The nature of our training set means that there are many more semantically-related training samples containing the radical compared to the one original character, so it makes sense that model would prefer to place the radical in the appropriate position. Sample weighting by corpus frequency would be one way of getting around this! We also see the the rest of the character is filled with what appears to be random stuff. I suspect this is again the model enforcing local consistency without particularly strong semantic guidance.</p>
+<center>
+<figure><img src="/36%20common%20radicals%2050%20step.png"/>
+</figure>
+
+</center>
+<h2 id="outro">Outro</h2>
+<p>So can we teach a model to understand how Chinese characters and then invent new ones? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an update where I add pronounciations to the character captions and see if this can be fixed!
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="test-the-models-here">Test the models here</h2>
+<p>If you want to try out the conditional glyffuser, the easiest way is to get the demo repo with <code>git clone https://github.com/yue-here/glyffuser</code>, make a python environment with <code>requirements.txt</code> (you may need to set it up for your GPU and jupyter) then run the <code>glyffuser inference.ipynb</code> notebook, which will summon the trained model from my huggingface repo.</p>
+<p>Failing that, I&rsquo;ve made this applet that will run the inference, but please be patient as it&rsquo;s quite slow (around a minute per step).
+<script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.31.5/gradio.js">
+</script>
+<gradio-app space="yuewu/glyffuser"></gradio-app></p>
+<h2 id="bonus-content">Bonus content</h2>
+<p>Here&rsquo;s a training video from a version of the glyffuser trained on the ancient Chinese writing known as <a href="https://en.wikipedia.org/wiki/Seal_script" target="_blank" rel="noopener noreffer ">seal script</a>:</p>
+<center>
+<video width=100% autoplay loop muted>
+  <source src="/sealscript_training.mp4" type="video/mp4">
+</video>
+</center></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-05-26</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/glyffuser/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://yue-here.github.io/glyffuser/" data-title="Teaching an AI to invent new Chinese characters" data-via="_yue_wu"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://yue-here.github.io/glyffuser/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://yue-here.github.io/glyffuser/" data-title="Teaching an AI to invent new Chinese characters"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://yue-here.github.io/glyffuser/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/opticalflow/" class="prev" rel="prev" title="Optical flow timelapse stabiliser"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Optical flow timelapse stabiliser</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Yue Wu</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

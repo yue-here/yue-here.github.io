@@ -30,7 +30,7 @@ In this article, we build a text-to-image AI that learns Chinese characters in t
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/glyffuser\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3493 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3517 ,
         "url": "https:\/\/yue-here.github.io\/glyffuser\/","datePublished": "2024-05-26T00:00:00+00:00","dateModified": "2024-05-26T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -104,7 +104,7 @@ In this article, we build a text-to-image AI that learns Chinese characters in t
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Teaching an AI to invent new Chinese characters</h1><h2 class="single-subtitle">Introducing the &#39;Glyffuser&#39;</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3493 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3517 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -188,8 +188,9 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 </center>
 <p>This allows us to do some interesting things like morph smoothly between characters by interpolating between vectors in latent space:</p>
 <center>
-<video width="128" height="128" autoplay loop muted>
+<video width="128" height="128" autoplay loop muted playsinline>
   <source src="/VAE_interpolation_small.mp4" type="video/mp4">
+  Your browser does not support the video tag.
 </video>
 </center>
 <p>For some datasets such as faces or organic molecules, VAEs can be used to generate convincing new samples simply by moving around in the latent space. However, this is a dead end for us - the intermediate steps are clearly not valid Chinese characters, and there is no clear way of accessing the underlying structure of the distribution do so. This gives us a not-so-elegant segue to the generative modality <em>du jour</em>: diffusion models.</p>
@@ -292,9 +293,10 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 </ol>
 <p>Below is a video of characters generated during each training epoch from a model trained for 100 epochs on the same Chinese glyph dataset used before. Compared to the VAE model discussed in the last part, we can see the unconditional diffusion model is much better at capturing the hierarchical structure of characters at different levels, and learns this very early on in the training process.</p>
 <center>
-<video width=100% autoplay loop muted>
-  <source src="/unconditional_glyffuser_training.mp4" type="video/mp4">
-</video>
+  <video width="100%" autoplay loop muted playsinline>
+    <source src="/unconditional_glyffuser_training.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </center>
 <h2 id="conditional-diffusion-model">Conditional diffusion model</h2>
 <p>Now that we have confirmed we can generate convincing Chinese characters a diffusion model, let&rsquo;s train a text-to-image model conditioned on the English definitions of each character. If the model correctly learns how the English definition relates to the Chinese character, it should be able to &lsquo;understand&rsquo; the rules for how characters are constructed and generate characters that &lsquo;give the right vibe&rsquo; for a given english prompt.</p>
@@ -425,9 +427,10 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 <h2 id="bonus-content">Bonus content</h2>
 <p>Here&rsquo;s a training video from a version of the glyffuser trained on the ancient Chinese writing known as <a href="https://en.wikipedia.org/wiki/Seal_script" target="_blank" rel="noopener noreffer ">seal script</a>:</p>
 <center>
-<video width=100% autoplay loop muted>
-  <source src="/sealscript_training.mp4" type="video/mp4">
-</video>
+  <video width="100%" autoplay loop muted playsinline>
+    <source src="/sealscript_training.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </center></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

@@ -220,7 +220,7 @@ Now that we understand better how the model works, let's take another look at pr
 </center>
 
 ## Outro
-So can we teach a model to understand how Chinese characters and then invent new ones? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an update where I add pronounciations to the character captions and see if this can be fixed!
+So can we teach a model to understand how Chinese characters and then invent new ones? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an [update](#bonus-content-2) where I add pronounciations to the character captions and see if this can be fixed!
 <br>
 <br>
 <br>
@@ -233,7 +233,7 @@ If you want to try out the conditional glyffuser, the easiest way is to get the 
 Failing that, I've made this applet that will run the inference, but please be patient as it's quite slow (around a minute per step).
 {{< glyffuser >}}
 
-## Bonus content
+## Bonus content 1: other writing styles
 Here's a training video from a version of the glyffuser trained on the ancient Chinese writing known as [seal script](https://en.wikipedia.org/wiki/Seal_script):
 
 <center>
@@ -242,3 +242,16 @@ Here's a training video from a version of the glyffuser trained on the ancient C
     Your browser does not support the video tag.
   </video>
 </center>
+
+## Bonus content 2: phonetic radicals
+To include the phonetic radicals, we need a representation. The standard romanization is known as [pinyin](https://en.wikipedia.org/wiki/Pinyin) - for example, the phrase 人工智能 (artificial intelligence) would be "rén gōng zhì néng". The diacritics on the vowels are the tones of which there are 4 in standard mandarin. These can also be represented numerically, e.g. "ren2 gong1 zhi4 neng2".
+
+Simply adding the pinyin to the english definition prior to training is unlikely to work as we are using a frozen tokenizer and text model which does not recognize the pinyin syllables. Instead, we can create separate embeddings of the same length as the image vector for the pinyin and add them directly, the same as the text conditioning is added. Specifically, based on how Chinese syllables are [structured](https://en.wikipedia.org/wiki/Pinyin_table), I added 3 trainable embeddings for the initial, final, and tone (for example, ren2 would become 'r', 'en' and '2'). To train the model, I added extra inputs for the pinyin and tone.
+
+After training the model in the same way as before, I tried to 'summon' the phonetic components. However, the results only changed slightly with different pinyin prompts. I suspect this is because of the excessive homophony in Chinese. For example, 羊 (yang2, 'goat/sheep') is a common phonetic radical. But for this exact syllable, wiktionary gives [47 different characters](https://en.wiktionary.org/wiki/y%C3%A1ng). Have a look at characters containing the top two phonetic radicals for this pronunciation, 羊 and 昜:
+
+羊佯垟徉样洋烊珜眻蛘𨦡羏劷<br>
+昜崵揚暘楊湯敭瑒煬禓瘍諹輰鍚鐊陽霷颺鰑鸉
+
+It's likely the same situation as the ['clashing radicals' case](#conditional-diffusion-model) where we can't activate the 'fire' and 'sickness' radicals at same time - when neither phonetic radical dominates the distribution, we end up sampling garbage.
+

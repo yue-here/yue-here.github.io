@@ -177,28 +177,44 @@ Intro Classifier-free guidance is an elegant and powerful technique that has rec
   });
 </script>
 <style>
+  html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Ensure body takes full height */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+  }
+  *, *::before, *::after {
+    box-sizing: inherit; /* Inherit box-sizing from body */
+  }
   .slider-container {
-    width: 100%; /* Adjust the width as a percentage of the window size */
+    max-width: 100%; /* Ensure the container doesn't overflow the viewport */
+    width: 100%; /* Adjust the width as a percentage of the viewport size */
     margin: 20px auto;
     display: flex; /* Use flexbox to align items horizontally */
     align-items: center; /* Center items vertically */
+    flex-wrap: nowrap; /* Prevent wrapping to ensure elements stay in one line */
+    overflow: hidden; /* Prevent overflow */
   }
   .parameterSlider {
     flex: 1; /* Allow the slider to grow and take available space */
     margin-left: 10px; /* Add some space between the value and the slider */
+    min-width: 0; /* Prevent the slider from overflowing the container */
   }
   .outputImage {
     display: block;
     margin: 20px auto;
-    max-width: 100%; /* Adjust the width of the image relative to the window size */
+    max-width: 100%; /* Adjust the width of the image relative to the viewport size */
   }
   .sliderValue {
-    min-width: 90px; /* Ensure the value box has some width */
-    text-align: left; /* Align the text inside the value box to the right */
+    min-width: 100px; /* Ensure the value box has some width */
+    text-align: right; /* Align the text inside the value box to the right */
+    white-space: nowrap; /* Prevent text from wrapping */
   }
   .autoplayButton {
     min-width: 60px; /* Set a fixed minimum width for the button */
     margin-right: 10px; /* Add some space between the button and the value */
+    flex-shrink: 0; /* Prevent the button from shrinking */
   }
 </style>
 <p><em>See the main Glyffuser article <a href="https://yue-here.github.io/glyffuser/" rel="">here</a></em></p>

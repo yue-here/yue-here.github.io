@@ -32,7 +32,7 @@ Intro Classifier-free guidance is an elegant and powerful technique that has rec
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/glyffuser2\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  524 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  516 ,
         "url": "https:\/\/yue-here.github.io\/glyffuser2\/","datePublished": "2024-06-12T00:00:00+00:00","dateModified": "2024-06-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -106,7 +106,7 @@ Intro Classifier-free guidance is an elegant and powerful technique that has rec
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Classifier-free guidance for the Glyffuser</h1><h2 class="single-subtitle">You need to learn to walk-walk before you can run</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-06-12">2024-06-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;524 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-06-12">2024-06-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;516 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -120,7 +120,7 @@ Intro Classifier-free guidance is an elegant and powerful technique that has rec
         <li><a href="#intro">Intro</a></li>
         <li><a href="#testing-cfg-scales">Testing CFG scales</a></li>
         <li><a href="#cfg-generations-for-the-most-common-radicals">CFG generations for the most common radicals</a></li>
-        <li><a href="#bonus-cfg-video-for-fire">Bonus: CFG video for &ldquo;fire&rdquo;</a></li>
+        <li><a href="#bonus-cfg-variations-for-fire">Bonus: CFG variations for &ldquo;fire&rdquo;</a></li>
       </ul>
     </li>
   </ul>
@@ -161,13 +161,54 @@ Intro Classifier-free guidance is an elegant and powerful technique that has rec
             <div class="admonition-content">Unusually, the &ldquo;bird&rdquo; radical can occur on either the left (&ldquo;鸵&rdquo;, ostrich) or right (&ldquo;鸡&rdquo;， chicken) sides of characters.</div>
         </div>
     </div>
-<p>Compared to <a href="https://yue-here.github.io/glyffuser/" rel="">previously</a>, we see that as we increase the guidance scale, the &lsquo;bird&rsquo; radical becomes increasingly activated from the very first sampling step. Interestingly, while the traditional form of the bird character &ldquo;鳥&rdquo; dominates (it is more prevalent in the training set), the simplified form &ldquo;鸟&rdquo; also makes a single appearance (10 steps, scale=50), making it a &rsquo;transition state&rsquo; during the denoising process. The animation below showing different random seeds at CFG scales of 0 to 100 shows it does indeed reduce sample variety. Compared to general-purpose text-to-image models however, we can tolerate higher CFG scales as they tend to give more convincing characters. If you follow any individual character, you&rsquo;ll see that it tends to start with one &lsquo;bird&rsquo; radical, then as CFG scale increases, at some point the other side will also collapse to a &lsquo;bird&rsquo; radical.</p>
-<center>
+<p>Compared to <a href="https://yue-here.github.io/glyffuser/" rel="">previously</a>, we see that as we increase the guidance scale, the &lsquo;bird&rsquo; radical becomes increasingly activated from the very first sampling step. Interestingly, while the traditional form of the bird character &ldquo;鳥&rdquo; dominates (it is more prevalent in the training set), the simplified form &ldquo;鸟&rdquo; also makes a single appearance (10 steps, scale=50), making it a &rsquo;transition state&rsquo; during the denoising process. The explorer below shows CFG scales of 0 to 100 for different random seeds - higher CFG scales do indeed reduce sample variety. Compared to general-purpose text-to-image models however, we can tolerate higher CFG scales as they tend to give more convincing characters. If you follow any individual character, you&rsquo;ll see that it tends to start with one &lsquo;bird&rsquo; radical, then as CFG scale increases, at some point the other side will also collapse to a &lsquo;bird&rsquo; radical.</p>
+<!-- <center>
   <video width="100%" autoplay loop muted playsinline>
     <source src="/bird_CFG1-100_compressed.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-</center>
+</center> -->
+<div class="slider-container">
+  <span id="sliderValue">CFG scale 1</span>
+  <input type="range" min="0" max="99" step="1" value="1" id="parameterSlider">
+</div>
+<img id="outputImage" src="/bird_slider/bird-CFG1_grid.png" alt="Model Output">
+<script>
+  const slider = document.getElementById('parameterSlider');
+  const outputImage = document.getElementById('outputImage');
+  const sliderValue = document.getElementById('sliderValue');
+
+  slider.addEventListener('input', (event) => {
+    const value = event.target.value; // Use the integer value directly
+    sliderValue.textContent = `CFG scale ${value}`; // Update the displayed value
+    outputImage.src = `/bird_slider/bird-CFG${value}_grid.png`;
+  });
+</script>
+<style>
+  .slider-container {
+    width: 80%; /* Adjust the width as a percentage of the window size */
+    margin: 20px auto;
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Center items vertically */
+  }
+  input[type="range"] {
+    flex: 1; /* Allow the slider to grow and take available space */
+    margin-left: 10px; /* Add some space between the value and the slider */
+  }
+  img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%; /* Adjust the width of the image relative to the window size */
+  }
+  #sliderValue {
+    min-width: 100px; /* Ensure the value box has some width */
+    text-align: right; /* Align the text inside the value box to the right */
+  }
+  body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+</style>
 <h3 id="cfg-generations-for-the-most-common-radicals">CFG generations for the most common radicals</h3>
 <p>For completeness, the effect of CFG on all of our previous generations is shown below. Only for radicals such as &lsquo;bird&rsquo;, &lsquo;fire&rsquo; (火) and &lsquo;walk&rsquo; (走) do we see multiples - these are the radicals which in known characters can lie on different sides.</p>
 <center>
@@ -175,14 +216,58 @@ Intro Classifier-free guidance is an elegant and powerful technique that has rec
 </figure>
 
 </center>
-<h3 id="bonus-cfg-video-for-fire">Bonus: CFG video for &ldquo;fire&rdquo;</h3>
+<h3 id="bonus-cfg-variations-for-fire">Bonus: CFG variations for &ldquo;fire&rdquo;</h3>
 <p>The Chinese character for fire &ldquo;火&rdquo; has a particularly varied set of possible locations. These are showcased in the characters &ldquo;炎&rdquo; and &ldquo;焱&rdquo;. Another form is the bottom radical &ldquo;灬&rdquo;, a kind of deconstructed version of &ldquo;火&rdquo;. As such, greater variety is possible and this shows:</p>
-<center>
+<!-- <center>
   <video width="100%" autoplay loop muted playsinline>
     <source src="/fire_CFG1-100_compressed.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-</center></div><div class="post-footer" id="post-footer">
+</center> -->
+<div class="slider-container slider-container-2">
+  <span id="sliderValue1" class="sliderValue">CFG scale 1</span>
+  <input type="range" min="0" max="99" step="1" value="1" id="parameterSlider1" class="parameterSlider">
+</div>
+<img id="outputImage1" class="outputImage" src="/fire_slider/fire-CFG1_grid.png" alt="Model Output">
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const slider1 = document.getElementById('parameterSlider1');
+    const outputImage1 = document.getElementById('outputImage1');
+    const sliderValue1 = document.getElementById('sliderValue1');
+
+    slider1.addEventListener('input', (event) => {
+      const value = event.target.value; // Use the integer value directly
+      sliderValue1.textContent = `CFG scale ${value}`; // Update the displayed value
+      outputImage1.src = `/fire_slider/fire-CFG${value}_grid.png`;
+    });
+  });
+</script>
+<style>
+  .slider-container-2 {
+    width: 80%; /* Adjust the width as a percentage of the window size */
+    margin: 20px auto;
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Center items vertically */
+  }
+  .slider-container-2 .parameterSlider {
+    flex: 1; /* Allow the slider to grow and take available space */
+    margin-left: 10px; /* Add some space between the value and the slider */
+  }
+  .slider-container-2 .outputImage {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%; /* Adjust the width of the image relative to the window size */
+  }
+  .slider-container-2 .sliderValue {
+    min-width: 100px; /* Ensure the value box has some width */
+    text-align: right; /* Align the text inside the value box to the right */
+  }
+  body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+</style>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

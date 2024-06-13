@@ -53,7 +53,7 @@
 
 <style>
   .slider-container {
-    width: 80%; /* Adjust the width as a percentage of the window size */
+    width: 100%; /* Adjust the width as a percentage of the window size */
     margin: 20px auto;
     display: flex; /* Use flexbox to align items horizontally */
     align-items: center; /* Center items vertically */
@@ -65,19 +65,15 @@
   .outputImage {
     display: block;
     margin: 20px auto;
-    max-width: 80%; /* Adjust the width of the image relative to the window size */
+    max-width: 100%; /* Adjust the width of the image relative to the window size */
   }
   .sliderValue {
-    min-width: 100px; /* Ensure the value box has some width */
-    text-align: right; /* Align the text inside the value box to the right */
+    min-width: 90px; /* Ensure the value box has some width */
+    text-align: left; /* Align the text inside the value box to the right */
   }
   .autoplayButton {
     min-width: 60px; /* Set a fixed minimum width for the button */
     margin-right: 10px; /* Add some space between the button and the value */
-  }
-  body {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
   }
 </style>
 

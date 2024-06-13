@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Teaching an AI to invent new Chinese characters - Yue Wu</title><meta name="Description" content="Yue Wu"><meta property="og:title" content="Teaching an AI to invent new Chinese characters" />
-<meta property="og:description" content="For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+<meta property="og:description" content="For associated code, please see the github repo. There is a follow-up where I use classifier-free guidance to get better results. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
 In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://yue-here.github.io/glyphexplorer/" /><meta property="article:section" content="posts" />
@@ -14,7 +14,7 @@ In this article, we build a text-to-image AI that learns Chinese characters in t
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Teaching an AI to invent new Chinese characters"/>
-<meta name="twitter:description" content="For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+<meta name="twitter:description" content="For associated code, please see the github repo. There is a follow-up where I use classifier-free guidance to get better results. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
 In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt."/>
 <meta name="application-name" content="Yue Wu">
 <meta name="apple-mobile-web-app-title" content="Yue Wu"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -30,7 +30,7 @@ In this article, we build a text-to-image AI that learns Chinese characters in t
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/yue-here.github.io\/glyphexplorer\/"
-        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3797 ,
+        },"image": ["https:\/\/yue-here.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3824 ,
         "url": "https:\/\/yue-here.github.io\/glyphexplorer\/","datePublished": "2024-05-26T00:00:00+00:00","dateModified": "2024-05-26T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/yue-here.github.io\/images\/avatar.png"},"author": {
@@ -104,7 +104,7 @@ In this article, we build a text-to-image AI that learns Chinese characters in t
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Teaching an AI to invent new Chinese characters</h1><h2 class="single-subtitle">Introducing the &#39;Glyffuser&#39;</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Yue Wu</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3797 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-26">2024-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3824 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;18 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -126,7 +126,7 @@ In this article, we build a text-to-image AI that learns Chinese characters in t
     <li><a href="#bonus-content-2-phonetic-radicals">Bonus content 2: phonetic radicals</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p><em>For associated code, please see the <a href="https://github.com/yue-here/glyffuser" target="_blank" rel="noopener noreffer ">github repo</a>. Huge shoutout to my old friend <a href="http://overpunch.com/" target="_blank" rel="noopener noreffer ">Daniel Tse</a>, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.</em></p>
+            </div><div class="content" id="content"><p><em>For associated code, please see the <a href="https://github.com/yue-here/glyffuser" target="_blank" rel="noopener noreffer ">github repo</a>. There is a follow-up where I use <a href="https://yue-here.github.io/glyffuser2/" rel="">classifier-free guidance</a> to get better results. Huge shoutout to my old friend <a href="http://overpunch.com/" target="_blank" rel="noopener noreffer ">Daniel Tse</a>, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.</em></p>
 <center>
 <figure><img src="/glyffuser%20grabber.png"/>
 </figure>
@@ -414,7 +414,9 @@ Plotly.d3.json("/umap_vae.json", function(err, fig) {
 
 </center>
 <h2 id="outro">Outro</h2>
-<p>So can we teach a model to understand how Chinese characters and then invent new ones? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an <a href="#bonus-content-2" rel="">update</a> where I add pronounciations to the character captions and see if this can be fixed!
+<p>So can we teach a model to understand how Chinese characters and then invent new ones? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components.</p>
+<p><a href="#bonus-content-2" rel="">Update 1</a>: I add a phonetic embedding to the model to see if this can be fixed.</p>
+<p><a href="https://yue-here.github.io/glyffuser2/" rel="">Update 2</a>: I implement classifier-free guidance, a method to enhance adherence to prompts. It works very well!
 <br>
 <br>
 <br>

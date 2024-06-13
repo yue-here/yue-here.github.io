@@ -1,6 +1,6 @@
 # Teaching an AI to invent new Chinese characters
 
-_For associated code, please see the [github repo](https://github.com/yue-here/glyffuser). Huge shoutout to my old friend [Daniel Tse](http://overpunch.com/), linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign._
+_For associated code, please see the [github repo](https://github.com/yue-here/glyffuser). There is a follow-up where I use [classifier-free guidance]({{< ref "glyffuser2.md" >}}) to get better results. Huge shoutout to my old friend [Daniel Tse](http://overpunch.com/), linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign._
 
 <center>
 {{< figure src="/glyffuser grabber.png">}}
@@ -220,7 +220,11 @@ Now that we understand better how the model works, let's take another look at pr
 </center>
 
 ## Outro
-So can we teach a model to understand how Chinese characters and then invent new ones? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components. Stay tuned for an [update](#bonus-content-2) where I add pronounciations to the character captions and see if this can be fixed!
+So can we teach a model to understand how Chinese characters and then invent new ones? It looks the answer is a resounding yes! We find that the final conditioned diffusion model (the Glyffuser™) has a strong conception of how the components of a Chinese character relate to its meaning, in much the same way a human would guess at the meaning of an unknown character. The one missing element is the use of phonentic components.
+
+[Update 1](#bonus-content-2): I add a phonetic embedding to the model to see if this can be fixed.
+
+[Update 2]({{< ref "glyffuser2.md" >}}): I implement classifier-free guidance, a method to enhance adherence to prompts. It works very well!
 <br>
 <br>
 <br>

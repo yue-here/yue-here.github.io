@@ -53,14 +53,6 @@ While machine learning has been very successful in image-processing applications
 &ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&rdquo; &ldquo;Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability&rdquo; &ldquo;A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture&rdquo; &ldquo;The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein&rdquo; Running the model The fun of generative models is in running it yourself of course.]]></description>
 </item>
 <item>
-    <title>Taking the diffraction pattern of a city</title>
-    <link>https://yue-here.github.io/citydiffraction/</link>
-    <pubDate>Thu, 08 Sep 2022 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/citydiffraction/</guid>
-    <description><![CDATA[PauseCFG scale 1PauseCFG scale 1PauseCFG scale 1]]></description>
-</item>
-<item>
     <title>Training T5 models and generating text</title>
     <link>https://yue-here.github.io/t5/</link>
     <pubDate>Thu, 25 Aug 2022 00:00:00 &#43;0000</pubDate>

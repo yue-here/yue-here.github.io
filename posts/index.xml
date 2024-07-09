@@ -4,23 +4,13 @@
         <link>https://yue-here.github.io/posts/</link>
         <description>All Posts | Yue Wu</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yue.wu.mail[at]gmail.com (Yue Wu)</managingEditor>
-            <webMaster>yue.wu.mail[at]gmail.com (Yue Wu)</webMaster><lastBuildDate>Wed, 12 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Classifier-free guidance for the Glyffuser</title>
-    <link>https://yue-here.github.io/glyffuser2/</link>
-    <pubDate>Wed, 12 Jun 2024 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/glyffuser2/</guid>
-    <description><![CDATA[See the main Glyffuser article here
-Here we test classifier-free guidance (CFG) as a method to enhance adherance to text conditioning. For the prompt &ldquo;walk&rdquo; (Chinese character 走), as we increase the CFG multiplier we end up with a double &ldquo;walk&rdquo; character that still follows the rules of Chinese glyph construction
-Intro Classifier-free guidance is an elegant and powerful technique that has recently become ubiquitous in conditional diffusion models. (For an excellent treatment, see here)]]></description>
-</item>
-<item>
+            <webMaster>yue.wu.mail[at]gmail.com (Yue Wu)</webMaster><lastBuildDate>Sun, 26 May 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://yue-here.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Teaching an AI to invent new Chinese characters</title>
     <link>https://yue-here.github.io/glyffuser/</link>
     <pubDate>Sun, 26 May 2024 00:00:00 &#43;0000</pubDate>
     <author>Yue Wu</author>
     <guid>https://yue-here.github.io/glyffuser/</guid>
-    <description><![CDATA[For associated code, please see the github repo. There is a follow-up where I use classifier-free guidance to get better results. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+    <description><![CDATA[For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
 In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt.]]></description>
 </item>
 <item>
@@ -29,7 +19,7 @@ In this article, we build a text-to-image AI that learns Chinese characters in t
     <pubDate>Sun, 26 May 2024 00:00:00 &#43;0000</pubDate>
     <author>Yue Wu</author>
     <guid>https://yue-here.github.io/glyphexplorer/</guid>
-    <description><![CDATA[For associated code, please see the github repo. There is a follow-up where I use classifier-free guidance to get better results. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
+    <description><![CDATA[For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
 In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt.]]></description>
 </item>
 <item>

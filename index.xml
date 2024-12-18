@@ -1,73 +1,234 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Yue Wu</title>
-        <link>https://yue-here.github.io/</link>
-        <description>Yue Wu</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>yue.wu.mail[at]gmail.com (Yue Wu)</managingEditor>
-            <webMaster>yue.wu.mail[at]gmail.com (Yue Wu)</webMaster><lastBuildDate>Sun, 26 May 2024 00:00:00 &#43;0000</lastBuildDate>
-            <atom:link href="https://yue-here.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
-    <title>Teaching an AI to invent new Chinese characters</title>
-    <link>https://yue-here.github.io/glyffuser/</link>
-    <pubDate>Sun, 26 May 2024 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/glyffuser/</guid>
-    <description><![CDATA[For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
-In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt.]]></description>
-</item>
-<item>
-    <title>Teaching an AI to invent new Chinese characters</title>
-    <link>https://yue-here.github.io/glyphexplorer/</link>
-    <pubDate>Sun, 26 May 2024 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/glyphexplorer/</guid>
-    <description><![CDATA[For associated code, please see the github repo. Huge shoutout to my old friend Daniel Tse, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.
-In this article, we build a text-to-image AI that learns Chinese characters in the same way humans do - by understanding what their components mean. It can then invent new characters based on the meaning of an English prompt.]]></description>
-</item>
-<item>
-    <title>Optical flow timelapse stabiliser</title>
-    <link>https://yue-here.github.io/opticalflow/</link>
-    <pubDate>Wed, 14 Feb 2024 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/opticalflow/</guid>
-    <description><![CDATA[For associated code, please see the Jupyter notebook in the github repository
-While machine learning has been very successful in image-processing applications, there&rsquo;s still a place for traditional computer vision techniques. One of my hobbies is making timelapse videos by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage.]]></description>
-</item>
-<item>
-    <title>Chemical Diffusion</title>
-    <link>https://yue-here.github.io/chemicaldiffusion/</link>
-    <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/chemicaldiffusion/</guid>
-    <description><![CDATA[Generative text-to-image models have recent become very popular. Having a bunch of fully captioned images left over from the This JACS Does Not Exist project, I&rsquo;ve trained a Stable Diffusion checkpoint on that dataset (~60K JACS table-of-contents images with matched paper titles). It seems to work pretty well. Here are some examples of prompts and the resulting images generated:
-&ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&rdquo; &ldquo;Lead-free Cs2AgBiBr6 Perovskite Solar Cells with High Efficiency and Stability&rdquo; &ldquo;A Triazine-Based Covalent Organic Framework for High-Efficiency CO2 Capture&rdquo; &ldquo;The Design and Synthesis of a New Family of Small Molecule Inhibitors Targeting the BCL-2 Protein&rdquo; Running the model The fun of generative models is in running it yourself of course.]]></description>
-</item>
-<item>
-    <title>Training T5 models and generating text</title>
-    <link>https://yue-here.github.io/t5/</link>
-    <pubDate>Thu, 25 Aug 2022 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/t5/</guid>
-    <description><![CDATA[For the language-to-language components of this JACS does not exist, I chose Google&rsquo;s T5 (text-to-text transfer transformer) as a recent cutting-edge text sequence to sequence model.
-I had already scraped all the JACS titles and abstracts, so training data was readily available. The first task was to generate somewhat-convincing abstracts from titles to increase the entertainment value of TJDNE.
-As abstracts have a maximum length, I wanted to make sure that a whole abstract would be included in T5&rsquo;s maximum input length of 512 tokens so that end-of-sequence locations could be determined.]]></description>
-</item>
-<item>
-    <title>Abstract2title</title>
-    <link>https://yue-here.github.io/abstract2title/</link>
-    <pubDate>Mon, 22 Aug 2022 00:00:00 &#43;0000</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/abstract2title/</guid>
-    <description><![CDATA[Many people enjoyed title2abstract from the this JACS does not exist project so I inverted the training parameters for a quick follow up. Presenting abstract2title: You can also test the title2abstract and toc2title apps in my previous post.]]></description>
-</item>
-<item>
-    <title>This JACS does not exist</title>
-    <link>https://yue-here.github.io/thisjacsdoesnotexist/</link>
-    <pubDate>Mon, 01 Aug 2022 00:56:40 -0700</pubDate>
-    <author>Yue Wu</author>
-    <guid>https://yue-here.github.io/thisjacsdoesnotexist/</guid>
-    <description><![CDATA[An imaginary abstract generated at thisJACSdoesnotexist.com In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. TOC ROFL, of which I am a multiple inductee)
-In general, though, ToC images follow a fairly consistent visual language, with distinct conventions followed in different subfields.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Yue Wu</title>
+    <link>https://yue-here.github.io/</link>
+    <description>Recent content on Yue Wu</description>
+    <generator>Hugo -- 0.139.5</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 26 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://yue-here.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Teaching an AI to invent new Chinese characters</title>
+      <link>https://yue-here.github.io/posts/glyffuser/</link>
+      <pubDate>Sun, 26 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/posts/glyffuser/</guid>
+      <description>&lt;!-- JS for animations --&gt;
+&lt;script&gt;
+  document.addEventListener(&#39;DOMContentLoaded&#39;, (event) =&gt; {
+    function initializeSlider(sliderId, outputImageId, sliderValueId, autoplayButtonId, folder) {
+      const slider = document.getElementById(sliderId);
+      const outputImage = document.getElementById(outputImageId);
+      const sliderValue = document.getElementById(sliderValueId);
+      const autoplayButton = document.getElementById(autoplayButtonId);
+
+      let autoplay = true;
+      let interval;
+
+      function updateSlider(value) {
+        sliderValue.textContent = `CFG scale ${value}`;
+        outputImage.src = `/${folder}_slider/${folder}-CFG${value}_grid.png`;
+      }
+
+      slider.addEventListener(&#39;input&#39;, (event) =&gt; {
+        const value = event.target.value;
+        updateSlider(value);
+      });
+
+      autoplayButton.addEventListener(&#39;click&#39;, () =&gt; {
+        autoplay = !autoplay;
+        autoplayButton.textContent = autoplay ? &#39;Pause&#39; : &#39;Play&#39;;
+        if (autoplay) {
+          startAutoplay();
+        } else {
+          clearInterval(interval);
+        }
+      });
+
+      function startAutoplay() {
+        interval = setInterval(() =&gt; {
+          let value = parseInt(slider.value, 10);
+          value = (value + 1) % 100;
+          slider.value = value;
+          updateSlider(value);
+        }, 100); // Change the interval time as needed
+      }
+
+      // Start autoplay by default
+      startAutoplay();
+    }
+
+    initializeSlider(&#39;parameterSlider1&#39;, &#39;outputImage1&#39;, &#39;sliderValue1&#39;, &#39;autoplayButton1&#39;, &#39;bird&#39;);
+    initializeSlider(&#39;parameterSlider2&#39;, &#39;outputImage2&#39;, &#39;sliderValue2&#39;, &#39;autoplayButton2&#39;, &#39;fire&#39;);
+    initializeSlider(&#39;parameterSlider3&#39;, &#39;outputImage3&#39;, &#39;sliderValue3&#39;, &#39;autoplayButton3&#39;, &#39;hair&#39;);
+  });
+&lt;/script&gt;
+&lt;style&gt;
+  html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Ensure body takes full height */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    box-sizing: border-box; /* Ensure padding and border are included in element&#39;s total width and height */
+  }
+  *, *::before, *::after {
+    box-sizing: inherit; /* Inherit box-sizing from body */
+  }
+  .slider-container {
+    max-width: 100%; /* Ensure the container doesn&#39;t overflow the viewport */
+    width: 100%; /* Adjust the width as a percentage of the viewport size */
+    margin: 20px auto;
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Center items vertically */
+    flex-wrap: nowrap; /* Prevent wrapping to ensure elements stay in one line */
+    overflow: hidden; /* Prevent overflow */
+  }
+  .parameterSlider {
+    flex: 1; /* Allow the slider to grow and take available space */
+    margin-left: 10px; /* Add some space between the value and the slider */
+    min-width: 0; /* Prevent the slider from overflowing the container */
+  }
+  .outputImage {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%; /* Adjust the width of the image relative to the viewport size */
+  }
+  .sliderValue {
+    min-width: 100px; /* Ensure the value box has some width */
+    text-align: right; /* Align the text inside the value box to the right */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  .autoplayButton {
+    min-width: 60px; /* Set a fixed minimum width for the button */
+    margin-right: 10px; /* Add some space between the button and the value */
+    flex-shrink: 0; /* Prevent the button from shrinking */
+  }
+&lt;/style&gt;
+&lt;p&gt;&lt;em&gt;For associated code, please see the &lt;a href=&#34;https://github.com/yue-here/glyffuser&#34;&gt;github repo&lt;/a&gt;. Huge shoutout to my old friend &lt;a href=&#34;http://overpunch.com/&#34;&gt;Daniel Tse&lt;/a&gt;, linguist and ML expert extraordinaire for invaluable help and ideas on both fronts throughout this campaign.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Optical flow timelapse stabiliser</title>
+      <link>https://yue-here.github.io/posts/opticalflow/</link>
+      <pubDate>Wed, 14 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/posts/opticalflow/</guid>
+      <description>&lt;p&gt;For associated code, please see the &lt;a href=&#34;https://github.com/yue-here/optical-flow-stabilizer/blob/main/optical%20flow%20timelapse%20stabilizer%20tutorial.ipynb&#34;&gt;Jupyter notebook&lt;/a&gt; in the &lt;a href=&#34;https://github.com/yue-here/optical-flow-stabilizer&#34;&gt;github repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;While machine learning has been very successful in image-processing applications, there&amp;rsquo;s still a place for traditional computer vision techniques. One of my hobbies is making &lt;a href=&#34;https://youtu.be/SA69YDp-wbg&#34;&gt;timelapse videos&lt;/a&gt; by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage. I have a backlog of timelapse footage that is unwatchable due to excessive shifts of this nature. In the past I&amp;rsquo;ve used the Blender VFX stabilization tool to stabilize on a feature, but this breaks in e.g. day-night cycles or subjects moving in front of the feature. I finally got round to writing my code to do this that doesn&amp;rsquo;t rely on specific feature tracking.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Chemical Diffusion</title>
+      <link>https://yue-here.github.io/posts/chemicaldiffusion/</link>
+      <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/posts/chemicaldiffusion/</guid>
+      <description>&lt;p&gt;Generative text-to-image models have recent become very popular. Having a bunch of fully captioned images left over from the &lt;a href=&#34;http://thisjacsdoesnotexist.com/&#34;&gt;This JACS Does Not Exist&lt;/a&gt; project, I&amp;rsquo;ve trained a Stable Diffusion checkpoint on that dataset (~60K JACS table-of-contents images with matched paper titles). It seems to work pretty well. Here are some examples of prompts and the resulting images generated:&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;br&gt;&amp;ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&amp;rdquo;
+&lt;br&gt;
+&lt;img alt=&#34;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&#34; loading=&#34;lazy&#34; src=&#34;https://yue-here.github.io/chemdiff_1.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Training T5 models and generating text</title>
+      <link>https://yue-here.github.io/posts/t5/</link>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/posts/t5/</guid>
+      <description>&lt;p&gt;For the language-to-language components of &lt;a href=&#34;https://thisjacsdoesnotexist.com&#34;&gt;this JACS does not exist&lt;/a&gt;, I chose Google&amp;rsquo;s &lt;a href=&#34;https://huggingface.co/docs/transformers/v4.21.2/en/model_doc/t5&#34;&gt;T5&lt;/a&gt; (text-to-text transfer transformer) as a recent cutting-edge text sequence to sequence model.&lt;/p&gt;
+&lt;p&gt;I had already scraped all the JACS titles and abstracts, so training data was readily available. The first task was to generate somewhat-convincing abstracts from titles to increase the entertainment value of TJDNE.&lt;/p&gt;
+&lt;p&gt;As abstracts have a maximum length, I wanted to make sure that a whole abstract would be included in T5&amp;rsquo;s maximum input length of 512 tokens so that end-of-sequence locations could be determined. Here&amp;rsquo;s a histogram of the length distribution of the abstracts tokenized with the T5 tokenizer.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Abstract2title</title>
+      <link>https://yue-here.github.io/posts/abstract2title/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/posts/abstract2title/</guid>
+      <description>&lt;p&gt;Many people enjoyed &lt;a href=&#34;https://yue-here.github.io/posts/thisjacsdoesnotexist/#title2abstract&#34;&gt;title2abstract&lt;/a&gt; from the &lt;a href=&#34;http://thisjacsdoesnotexist.com/&#34;&gt;this JACS does not exist&lt;/a&gt; project so I inverted the training parameters for a quick follow up. Presenting abstract2title:
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;script type=&#34;module&#34; src=&#34;https://gradio.s3-us-west-2.amazonaws.com/3.1.7/gradio.js&#34;&gt;
+&lt;/script&gt;
+&lt;gradio-app space=&#34;yuewu/abstract2title&#34;&gt;&lt;/gradio-app&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;You can also test the &lt;a href=&#34;https://yue-here.github.io/posts/thisjacsdoesnotexist/#title2abstract&#34;&gt;title2abstract&lt;/a&gt; and
+&lt;a href=&#34;https://yue-here.github.io/posts/thisjacsdoesnotexist/#toc2title&#34;&gt;toc2title&lt;/a&gt; apps in my previous post.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Papers</title>
+      <link>https://yue-here.github.io/papers/</link>
+      <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/papers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>https://yue-here.github.io/research/</link>
+      <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/research/</guid>
+      <description>&lt;p&gt;Broadly: materials science, applications of machine learning, autonomous experimentation&lt;/p&gt;
+&lt;p&gt;Projects I&amp;rsquo;ve worked on previously:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A new method for &lt;a href=&#34;https://doi.org/10.1038/s41524-024-01326-2&#34;&gt;intelligent exploration of design spaces&lt;/a&gt; beyond Bayesian optimization. With Bayesian algorithm execution (BAX), any design space exploration question can easily be optimized, e.g.: &amp;ldquo;find synthesis conditions for nanoparticles with dispersity &amp;lt;5% and sizes of {10, 20, 30} ± 0.5nm&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Invented a way to &lt;a href=&#34;https://doi.org/10.1038/s44160-021-00005-0&#34;&gt;make covalent organic frameworks (&amp;lsquo;COFs&amp;rsquo;) in water, in minutes, using ultrasound&lt;/a&gt;. Usually they are made in toxic organic solvents over 3 days in an oven at 120 °C.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sonochemical COF synthesis</title>
+      <link>https://yue-here.github.io/papers/cofs/</link>
+      <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/papers/cofs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bio</title>
+      <link>https://yue-here.github.io/bio/</link>
+      <pubDate>Mon, 01 Aug 2022 00:56:40 -0700</pubDate>
+      <guid>https://yue-here.github.io/bio/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Research Associate, &lt;a href=&#34;https://www-ssrl.slac.stanford.edu/&#34;&gt;SSRL&lt;/a&gt;, &lt;a href=&#34;https://www6.slac.stanford.edu/&#34;&gt;SLAC&lt;/a&gt;, Stanford. 2022-2023&lt;/li&gt;
+&lt;li&gt;Research Lead, &lt;a href=&#34;https://www.liverpool.ac.uk/cooper-group/&#34;&gt;Cooper group&lt;/a&gt;, &lt;a href=&#34;https://www.liverpool.ac.uk/materials-innovation-factory/&#34;&gt;Materials Innovation Factory&lt;/a&gt;, University of Liverpool. 2019-2021&lt;/li&gt;
+&lt;li&gt;Postdoc, Cheetham &amp;amp; Wang groups, National University of Singapore. 2017-2019&lt;/li&gt;
+&lt;li&gt;Postdoc, Cheetham group, University of Cambridge. 2016-2017&lt;/li&gt;
+&lt;li&gt;Postdoc, O&amp;rsquo;Hare group, University of Oxford. 2014-2016&lt;/li&gt;
+&lt;li&gt;PhD (Chemistry), Kepert group, University of Sydney. 2008-2013&lt;/li&gt;
+&lt;li&gt;BSc (Adv) Hons I, University of Sydney. 2004-2007&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>This JACS does not exist</title>
+      <link>https://yue-here.github.io/posts/thisjacsdoesnotexist/</link>
+      <pubDate>Mon, 01 Aug 2022 00:56:40 -0700</pubDate>
+      <guid>https://yue-here.github.io/posts/thisjacsdoesnotexist/</guid>
+      <description>&lt;center&gt;
+&lt;p&gt;&lt;a href=&#34;http://thisjacsdoesnotexist.com/&#34;&gt;&lt;figure&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;https://yue-here.github.io/TJDNE_website_3.png&#34;/&gt; &lt;figcaption&gt;
+            An imaginary abstract generated at thisJACSdoesnotexist.com
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;p&gt;In academic chemistry, authors submit a promotional table-of-contents (ToC) image when publishing research papers in most journals. These fascinate me as they are one of the few places where unfettered self expression is tolerated, if not condoned. (See e.g. &lt;a href=&#34;https://tocrofl.tumblr.com/&#34;&gt;TOC ROFL&lt;/a&gt;, of which I am a multiple &lt;a href=&#34;https://pubs.acs.org/cms/10.1021/acs.chemmater.5b03085/asset/images/medium/cm-2015-030857_0005.gif&#34;&gt;inductee&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;In general, though, ToC images follow a fairly consistent visual language, with distinct conventions followed in different subfields. This presents an vaguely plausible excuse to train some machine learning models to generate ToCs and their accompanying paraphenalia. In this project, I use ToC images, titles and abstracts from one of the most longest running and well-known chemistry journals, the Journal of the American Chemical Society (&lt;a href=&#34;https://pubs.acs.org/journal/jacsat&#34;&gt;JACS&lt;/a&gt;) as a dataset to train:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Personal</title>
+      <link>https://yue-here.github.io/personal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.github.io/personal/</guid>
+      <description>&lt;p&gt;I enjoy taking care of plants and making time-lapse videos of their growth - lots of examples on my &lt;a href=&#34;https://www.youtube.com/channel/UCBj738gncFRi0eGe1JXtZ_A&#34;&gt;youtube channel&lt;/a&gt;.&lt;/p&gt;
+&lt;center&gt;
+
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/JPsybNMOj24?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;/center&gt;
+&lt;br&gt;
+&lt;p&gt;I sometimes &lt;a href=&#34;https://www.thingiverse.com/etsugo/designs&#34;&gt;design&lt;/a&gt; and 3D print things.&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img alt=&#34;lampshade&#34; loading=&#34;lazy&#34; src=&#34;https://yue-here.github.io/lampshade.jpg&#34;&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;br&gt;
+&lt;p&gt;I used to be an avid archer and martial artist.&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img alt=&#34;archery&#34; loading=&#34;lazy&#34; src=&#34;https://yue-here.github.io/archery.jpg&#34;&gt;&lt;/p&gt;
+&lt;/center&gt;</description>
+    </item>
+  </channel>
 </rss>

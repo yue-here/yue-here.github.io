@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Yue Wu</title>
-    <link>https://yue-here.github.io/posts/</link>
+    <link>https://yue-here.com/posts/</link>
     <description>Recent content in Posts on Yue Wu</description>
     <generator>Hugo -- 0.139.5</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://yue-here.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yue-here.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Teaching an AI to invent new Chinese characters</title>
-      <link>https://yue-here.github.io/posts/glyffuser/</link>
+      <link>https://yue-here.com/posts/glyffuser/</link>
       <pubDate>Sun, 26 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://yue-here.github.io/posts/glyffuser/</guid>
+      <guid>https://yue-here.com/posts/glyffuser/</guid>
       <description>&lt;!-- JS for animations --&gt;
 &lt;script&gt;
   document.addEventListener(&#39;DOMContentLoaded&#39;, (event) =&gt; {
@@ -108,53 +108,53 @@
     </item>
     <item>
       <title>Optical flow timelapse stabiliser</title>
-      <link>https://yue-here.github.io/posts/opticalflow/</link>
+      <link>https://yue-here.com/posts/opticalflow/</link>
       <pubDate>Wed, 14 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>https://yue-here.github.io/posts/opticalflow/</guid>
+      <guid>https://yue-here.com/posts/opticalflow/</guid>
       <description>&lt;p&gt;For associated code, please see the &lt;a href=&#34;https://github.com/yue-here/optical-flow-stabilizer/blob/main/optical%20flow%20timelapse%20stabilizer%20tutorial.ipynb&#34;&gt;Jupyter notebook&lt;/a&gt; in the &lt;a href=&#34;https://github.com/yue-here/optical-flow-stabilizer&#34;&gt;github repository&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;While machine learning has been very successful in image-processing applications, there&amp;rsquo;s still a place for traditional computer vision techniques. One of my hobbies is making &lt;a href=&#34;https://youtu.be/SA69YDp-wbg&#34;&gt;timelapse videos&lt;/a&gt; by taking photos every 10 minutes for many days, weeks or even months. Over this time scale, environmental effects such as thermal expansion from the day-night cycle can introduce period offsets into the footage. I have a backlog of timelapse footage that is unwatchable due to excessive shifts of this nature. In the past I&amp;rsquo;ve used the Blender VFX stabilization tool to stabilize on a feature, but this breaks in e.g. day-night cycles or subjects moving in front of the feature. I finally got round to writing my code to do this that doesn&amp;rsquo;t rely on specific feature tracking.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Chemical Diffusion</title>
-      <link>https://yue-here.github.io/posts/chemicaldiffusion/</link>
+      <link>https://yue-here.com/posts/chemicaldiffusion/</link>
       <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>https://yue-here.github.io/posts/chemicaldiffusion/</guid>
+      <guid>https://yue-here.com/posts/chemicaldiffusion/</guid>
       <description>&lt;p&gt;Generative text-to-image models have recent become very popular. Having a bunch of fully captioned images left over from the &lt;a href=&#34;http://thisjacsdoesnotexist.com/&#34;&gt;This JACS Does Not Exist&lt;/a&gt; project, I&amp;rsquo;ve trained a Stable Diffusion checkpoint on that dataset (~60K JACS table-of-contents images with matched paper titles). It seems to work pretty well. Here are some examples of prompts and the resulting images generated:&lt;/p&gt;
 &lt;center&gt;
 &lt;p&gt;&lt;br&gt;&amp;ldquo;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&amp;rdquo;
 &lt;br&gt;
-&lt;img alt=&#34;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&#34; loading=&#34;lazy&#34; src=&#34;https://yue-here.github.io/chemdiff_1.png&#34;&gt;&lt;/p&gt;</description>
+&lt;img alt=&#34;Development of a Highly Efficient and Selective Catalytic Enantioselective Hydrogenation for Organic Synthesis&#34; loading=&#34;lazy&#34; src=&#34;https://yue-here.com/chemdiff_1.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Training T5 models and generating text</title>
-      <link>https://yue-here.github.io/posts/t5/</link>
+      <link>https://yue-here.com/posts/t5/</link>
       <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://yue-here.github.io/posts/t5/</guid>
+      <guid>https://yue-here.com/posts/t5/</guid>
       <description>&lt;p&gt;For the language-to-language components of &lt;a href=&#34;https://thisjacsdoesnotexist.com&#34;&gt;this JACS does not exist&lt;/a&gt;, I chose Google&amp;rsquo;s &lt;a href=&#34;https://huggingface.co/docs/transformers/v4.21.2/en/model_doc/t5&#34;&gt;T5&lt;/a&gt; (text-to-text transfer transformer) as a recent cutting-edge text sequence to sequence model.&lt;/p&gt;
 &lt;p&gt;I had already scraped all the JACS titles and abstracts, so training data was readily available. The first task was to generate somewhat-convincing abstracts from titles to increase the entertainment value of TJDNE.&lt;/p&gt;
 &lt;p&gt;As abstracts have a maximum length, I wanted to make sure that a whole abstract would be included in T5&amp;rsquo;s maximum input length of 512 tokens so that end-of-sequence locations could be determined. Here&amp;rsquo;s a histogram of the length distribution of the abstracts tokenized with the T5 tokenizer.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Abstract2title</title>
-      <link>https://yue-here.github.io/posts/abstract2title/</link>
+      <link>https://yue-here.com/posts/abstract2title/</link>
       <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://yue-here.github.io/posts/abstract2title/</guid>
-      <description>&lt;p&gt;Many people enjoyed &lt;a href=&#34;https://yue-here.github.io/posts/thisjacsdoesnotexist/#title2abstract&#34;&gt;title2abstract&lt;/a&gt; from the &lt;a href=&#34;http://thisjacsdoesnotexist.com/&#34;&gt;this JACS does not exist&lt;/a&gt; project so I inverted the training parameters for a quick follow up. Presenting abstract2title:
+      <guid>https://yue-here.com/posts/abstract2title/</guid>
+      <description>&lt;p&gt;Many people enjoyed &lt;a href=&#34;https://yue-here.com/posts/thisjacsdoesnotexist/#title2abstract&#34;&gt;title2abstract&lt;/a&gt; from the &lt;a href=&#34;http://thisjacsdoesnotexist.com/&#34;&gt;this JACS does not exist&lt;/a&gt; project so I inverted the training parameters for a quick follow up. Presenting abstract2title:
 &lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;script type=&#34;module&#34; src=&#34;https://gradio.s3-us-west-2.amazonaws.com/3.1.7/gradio.js&#34;&gt;
 &lt;/script&gt;
 &lt;gradio-app space=&#34;yuewu/abstract2title&#34;&gt;&lt;/gradio-app&gt;&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;You can also test the &lt;a href=&#34;https://yue-here.github.io/posts/thisjacsdoesnotexist/#title2abstract&#34;&gt;title2abstract&lt;/a&gt; and
-&lt;a href=&#34;https://yue-here.github.io/posts/thisjacsdoesnotexist/#toc2title&#34;&gt;toc2title&lt;/a&gt; apps in my previous post.&lt;/p&gt;</description>
+&lt;p&gt;You can also test the &lt;a href=&#34;https://yue-here.com/posts/thisjacsdoesnotexist/#title2abstract&#34;&gt;title2abstract&lt;/a&gt; and
+&lt;a href=&#34;https://yue-here.com/posts/thisjacsdoesnotexist/#toc2title&#34;&gt;toc2title&lt;/a&gt; apps in my previous post.&lt;/p&gt;</description>
     </item>
     <item>
       <title>This JACS does not exist</title>
-      <link>https://yue-here.github.io/posts/thisjacsdoesnotexist/</link>
+      <link>https://yue-here.com/posts/thisjacsdoesnotexist/</link>
       <pubDate>Mon, 01 Aug 2022 00:56:40 -0700</pubDate>
-      <guid>https://yue-here.github.io/posts/thisjacsdoesnotexist/</guid>
+      <guid>https://yue-here.com/posts/thisjacsdoesnotexist/</guid>
       <description>&lt;center&gt;
 &lt;p&gt;&lt;a href=&#34;http://thisjacsdoesnotexist.com/&#34;&gt;&lt;figure&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;https://yue-here.github.io/TJDNE_website_3.png&#34;/&gt; &lt;figcaption&gt;
+    &lt;img loading=&#34;lazy&#34; src=&#34;https://yue-here.com/TJDNE_website_3.png&#34;/&gt; &lt;figcaption&gt;
             An imaginary abstract generated at thisJACSdoesnotexist.com
         &lt;/figcaption&gt;
 &lt;/figure&gt;

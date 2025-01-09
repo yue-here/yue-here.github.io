@@ -6,8 +6,17 @@
     <description>Recent content on Yue Wu</description>
     <generator>Hugo -- 0.139.5</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 26 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://yue-here.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A visual guide to how diffusion models work</title>
+      <link>https://yue-here.com/posts/diffusion/</link>
+      <pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.com/posts/diffusion/</guid>
+      <description>&lt;p&gt;This article is aimed at those who want to understand exactly how diffusion models work, with no prior knowledge expected. I&amp;rsquo;ve tried to use illustrations wherever possible to provide visual intuitions on each part of these models. I&amp;rsquo;ve kept mathematical notation and equations to a minimum, and where they are necessary I&amp;rsquo;ve tried to define and explain them as they occur.&lt;/p&gt;
+&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve framed this article around three main questions:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Teaching an AI to invent new Chinese characters</title>
       <link>https://yue-here.com/posts/glyffuser/</link>

@@ -82,7 +82,7 @@
     box-sizing: inherit; /* Inherit box-sizing from body */
   }
   .slider-container {
-    max-width: 80%; /* Ensure the container doesn&#39;t overflow the viewport */
+    max-width: 100%; /* Ensure the container doesn&#39;t overflow the viewport */
     width: 100%; /* Adjust the width as a percentage of the viewport size */
     margin: 20px auto;
     display: flex; /* Use flexbox to align items horizontally */

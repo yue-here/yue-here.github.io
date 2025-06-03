@@ -6,8 +6,116 @@
     <description>Recent content on Yue Wu</description>
     <generator>Hugo -- 0.139.5</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://yue-here.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using human feedback to align a diffusion model</title>
+      <link>https://yue-here.com/posts/dpo/</link>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://yue-here.com/posts/dpo/</guid>
+      <description>&lt;!-- JS for animations --&gt;
+&lt;script&gt;
+  document.addEventListener(&#39;DOMContentLoaded&#39;, (event) =&gt; {
+    function initializeSlider(sliderId, outputImageId, sliderValueId, autoplayButtonId, folder) {
+    const slider = document.getElementById(sliderId);
+    const outputImage = document.getElementById(outputImageId);
+    const sliderValue = document.getElementById(sliderValueId);
+    const autoplayButton = document.getElementById(autoplayButtonId);
+
+    // adjust slider range to 0…20
+    slider.min = 0;
+    slider.max = 20;
+    slider.step = 1;
+    slider.value = 0;
+
+    let autoplay = false;
+    let interval;
+
+    function updateSlider(value) {
+        // map 0 → 0, 1 → 9, 2 → 19, …, 20 → 199
+        const epochIndex = value === 0
+        ? 0
+        : value * 10 - 1;
+        const padded = String(epochIndex).padStart(4, &#39;0&#39;);
+
+        sliderValue.textContent = `Training epoch: ${epochIndex}`;
+        outputImage.src = `/${folder}_slider/epoch_${padded}.png`;
+    }
+
+    slider.addEventListener(&#39;input&#39;, e =&gt; {
+        updateSlider(+e.target.value);
+    });
+
+    autoplayButton.addEventListener(&#39;click&#39;, () =&gt; {
+        autoplay = !autoplay;
+        autoplayButton.textContent = autoplay ? &#39;Pause&#39; : &#39;Play&#39;;
+        if (autoplay) startAutoplay();
+        else clearInterval(interval);
+    });
+
+    function startAutoplay() {
+        const max = +slider.max;
+        interval = setInterval(() =&gt; {
+        let v = +slider.value;
+        v = (v + 1) % (max + 1);
+        slider.value = v;
+        updateSlider(v);
+        }, 200); // slow down if you like
+    }
+
+    updateSlider(0);
+    // startAutoplay();
+    }
+
+    initializeSlider(&#39;parameterSlider1&#39;, &#39;outputImage1&#39;, &#39;sliderValue1&#39;, &#39;autoplayButton1&#39;, &#39;DPO&#39;);
+  });
+&lt;/script&gt;
+&lt;style&gt;
+  html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Ensure body takes full height */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    box-sizing: border-box; /* Ensure padding and border are included in element&#39;s total width and height */
+  }
+  *, *::before, *::after {
+    box-sizing: inherit; /* Inherit box-sizing from body */
+  }
+  .slider-container {
+    max-width: 80%; /* Ensure the container doesn&#39;t overflow the viewport */
+    width: 100%; /* Adjust the width as a percentage of the viewport size */
+    margin: 20px auto;
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Center items vertically */
+    flex-wrap: nowrap; /* Prevent wrapping to ensure elements stay in one line */
+    overflow: hidden; /* Prevent overflow */
+  }
+  .parameterSlider {
+    flex: 1; /* Allow the slider to grow and take available space */
+    margin-left: 10px; /* Add some space between the value and the slider */
+    min-width: 0; /* Prevent the slider from overflowing the container */
+  }
+  .outputImage {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%; /* Adjust the width of the image relative to the viewport size */
+  }
+  .sliderValue {
+    min-width: 100px; /* Ensure the value box has some width */
+    text-align: right; /* Align the text inside the value box to the right */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  .autoplayButton {
+    min-width: 60px; /* Set a fixed minimum width for the button */
+    margin-right: 10px; /* Add some space between the button and the value */
+    flex-shrink: 0; /* Prevent the button from shrinking */
+    outline: 1px solid #000;
+    outline-offset: -2px;
+    background: #BBB;  
+  }
+&lt;/style&gt;
+&lt;p&gt;In this post, I give an end-to-end example of using human feedback data to align a diffusion model with &lt;a href=&#34;https://arxiv.org/abs/2305.18290&#34;&gt;direct preference optimization&lt;/a&gt; (DPO). If you&amp;rsquo;d like to test it out or follow along with the code, have a look at the notebook in &lt;a href=&#34;https://github.com/yue-here/glyffuser-dpo&#34;&gt;this repo&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>A visual guide to how diffusion models work</title>
       <link>https://yue-here.com/posts/diffusion/</link>

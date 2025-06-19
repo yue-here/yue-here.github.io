@@ -9,7 +9,7 @@
     <lastBuildDate>Mon, 02 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://yue-here.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Using human feedback to align a diffusion model</title>
+      <title>Using human feedback to align a diffusion model with DPO</title>
       <link>https://yue-here.com/posts/dpo/</link>
       <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://yue-here.com/posts/dpo/</guid>
@@ -22,9 +22,9 @@
     const sliderValue = document.getElementById(sliderValueId);
     const autoplayButton = document.getElementById(autoplayButtonId);
 
-    // adjust slider range to 0…20
+    // adjust slider range to 0…199 for 200 files
     slider.min = 0;
-    slider.max = 20;
+    slider.max = 199;
     slider.step = 1;
     slider.value = 0;
 
@@ -32,14 +32,11 @@
     let interval;
 
     function updateSlider(value) {
-        // map 0 → 0, 1 → 9, 2 → 19, …, 20 → 199
-        const epochIndex = value === 0
-        ? 0
-        : value * 10 - 1;
-        const padded = String(epochIndex).padStart(4, &#39;0&#39;);
+        // directly use the slider value as the file index
+        const padded = String(value).padStart(4, &#39;0&#39;);
 
-        sliderValue.textContent = `Training epoch: ${epochIndex}`;
-        outputImage.src = `/${folder}_slider/epoch_${padded}.png`;
+        sliderValue.textContent = `Training epoch: ${value}`;
+        outputImage.src = `/${folder}_slider/${padded}.png`;
     }
 
     slider.addEventListener(&#39;input&#39;, e =&gt; {
@@ -60,7 +57,7 @@
         v = (v + 1) % (max + 1);
         slider.value = v;
         updateSlider(v);
-        }, 200); // slow down if you like
+        }, 20); // slow down if you like
     }
 
     updateSlider(0);
@@ -114,7 +111,7 @@
     background: #BBB;  
   }
 &lt;/style&gt;
-&lt;p&gt;In this post, I give an end-to-end example of using human feedback data to align a diffusion model with &lt;a href=&#34;https://arxiv.org/abs/2305.18290&#34;&gt;direct preference optimization&lt;/a&gt; (DPO). If you&amp;rsquo;d like to test it out or follow along with the code, have a look at the notebook in &lt;a href=&#34;https://github.com/yue-here/glyffuser-dpo&#34;&gt;this repo&lt;/a&gt;.&lt;/p&gt;</description>
+&lt;p&gt;This article is aimed at those who want to do post-training alignment of generative models, but aren&amp;rsquo;t sure where to start. I give a end-to-end example of using human feedback data to align a generative model with &lt;a href=&#34;https://arxiv.org/abs/2305.18290&#34;&gt;direct preference optimization&lt;/a&gt; (DPO). I cover these steps:&lt;/p&gt;</description>
     </item>
     <item>
       <title>A visual guide to how diffusion models work</title>

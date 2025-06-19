@@ -2,52 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://yue-here.com/posts/</loc>
     <lastmod>2025-06-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/dpo/</loc>
+    <loc>https://yue-here.com/posts/dpo/</loc>
     <lastmod>2025-06-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://yue-here.com/</loc>
     <lastmod>2025-06-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/diffusion/</loc>
+    <loc>https://yue-here.com/posts/diffusion/</loc>
     <lastmod>2025-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/glyffuser/</loc>
+    <loc>https://yue-here.com/posts/glyffuser/</loc>
     <lastmod>2024-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/opticalflow/</loc>
+    <loc>https://yue-here.com/posts/opticalflow/</loc>
     <lastmod>2024-02-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/chemicaldiffusion/</loc>
+    <loc>https://yue-here.com/posts/chemicaldiffusion/</loc>
     <lastmod>2023-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/t5/</loc>
+    <loc>https://yue-here.com/posts/t5/</loc>
     <lastmod>2022-08-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/abstract2title/</loc>
+    <loc>https://yue-here.com/posts/abstract2title/</loc>
     <lastmod>2022-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/</loc>
+    <loc>https://yue-here.com/papers/</loc>
     <lastmod>2022-08-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/research/</loc>
+    <loc>https://yue-here.com/research/</loc>
     <lastmod>2022-08-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/cofs/</loc>
+    <loc>https://yue-here.com/papers/cofs/</loc>
     <lastmod>2022-08-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/bio/</loc>
+    <loc>https://yue-here.com/bio/</loc>
     <lastmod>2022-08-01T00:56:40-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/thisjacsdoesnotexist/</loc>
+    <loc>https://yue-here.com/posts/thisjacsdoesnotexist/</loc>
     <lastmod>2022-08-01T00:56:40-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://yue-here.com/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/personal/</loc>
+    <loc>https://yue-here.com/personal/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://yue-here.com/tags/</loc>
   </url>
 </urlset>

@@ -4,7 +4,7 @@
     <title>Yue Wu</title>
     <link>https://yue-here.com/</link>
     <description>Recent content on Yue Wu</description>
-    <generator>Hugo -- 0.139.5</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 02 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://yue-here.com/index.xml" rel="self" type="application/rss+xml" />
@@ -323,12 +323,13 @@
       <pubDate>Mon, 01 Aug 2022 00:56:40 -0700</pubDate>
       <guid>https://yue-here.com/bio/</guid>
       <description>&lt;ul&gt;
+&lt;li&gt;Chief Scientific Officer, Lightning Tree. 2026-&lt;/li&gt;
 &lt;li&gt;Research Associate, &lt;a href=&#34;https://www-ssrl.slac.stanford.edu/&#34;&gt;SSRL&lt;/a&gt;, &lt;a href=&#34;https://www6.slac.stanford.edu/&#34;&gt;SLAC&lt;/a&gt;, Stanford. 2022-2023&lt;/li&gt;
-&lt;li&gt;Research Lead, &lt;a href=&#34;https://www.liverpool.ac.uk/cooper-group/&#34;&gt;Cooper group&lt;/a&gt;, &lt;a href=&#34;https://www.liverpool.ac.uk/materials-innovation-factory/&#34;&gt;Materials Innovation Factory&lt;/a&gt;, University of Liverpool. 2019-2021&lt;/li&gt;
-&lt;li&gt;Postdoc, Cheetham &amp;amp; Wang groups, National University of Singapore. 2017-2019&lt;/li&gt;
-&lt;li&gt;Postdoc, Cheetham group, University of Cambridge. 2016-2017&lt;/li&gt;
-&lt;li&gt;Postdoc, O&amp;rsquo;Hare group, University of Oxford. 2014-2016&lt;/li&gt;
-&lt;li&gt;PhD (Chemistry), Kepert group, University of Sydney. 2008-2013&lt;/li&gt;
+&lt;li&gt;Research Lead, &lt;a href=&#34;https://www.liverpool.ac.uk/materials-innovation-factory/&#34;&gt;Materials Innovation Factory&lt;/a&gt;, University of Liverpool. 2019-2021&lt;/li&gt;
+&lt;li&gt;Postdoc, National University of Singapore. 2017-2019&lt;/li&gt;
+&lt;li&gt;Postdoc, University of Cambridge. 2016-2017&lt;/li&gt;
+&lt;li&gt;Postdoc, University of Oxford. 2014-2016&lt;/li&gt;
+&lt;li&gt;PhD (Chemistry), University of Sydney. 2008-2013&lt;/li&gt;
 &lt;li&gt;BSc (Adv) Hons I, University of Sydney. 2004-2007&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
@@ -355,10 +356,9 @@
       <guid>https://yue-here.com/personal/</guid>
       <description>&lt;p&gt;I enjoy taking care of plants and making time-lapse videos of their growth - lots of examples on my &lt;a href=&#34;https://www.youtube.com/channel/UCBj738gncFRi0eGe1JXtZ_A&#34;&gt;youtube channel&lt;/a&gt;.&lt;/p&gt;
 &lt;center&gt;
-
-    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/JPsybNMOj24?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
-    &lt;/div&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+			&lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/JPsybNMOj24?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+		&lt;/div&gt;
 
 &lt;/center&gt;
 &lt;br&gt;

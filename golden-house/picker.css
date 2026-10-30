@@ -1,0 +1,1387 @@
+/* Golden House dish picker: a standalone page with its own warm palette. */
+:root {
+    --bg: #fbf5ec;
+    --bg-glow: #f6e3c8;
+    --card: #fffdf9;
+    --chip: #f6eee3;
+    --ink: #2b1d16;
+    --muted: #7d6b5d;
+    --line: #ece0d0;
+    --line-strong: #d9c8b4;
+    --shadow: 0 1px 2px rgba(60, 30, 10, 0.06), 0 8px 24px rgba(60, 30, 10, 0.07);
+    --gh-red: #c8352b;
+    --gh-red-text: #b02a21;
+    --gh-gold: #e8b23a;
+    --gh-jade: #2e7d64;
+    --gh-cream: #fff4dc;
+    --gh-ink: #3b2208;
+    --gh-rim: #8e2219;
+    --gh-light: #ffe7a0;
+    --gh-reel: #fff8ea;
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #17110e;
+        --bg-glow: #2b1a12;
+        --card: #221915;
+        --chip: #2e221d;
+        --ink: #f4e9dd;
+        --muted: #b3a191;
+        --line: #352821;
+        --line-strong: #4f3d34;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.3);
+        --gh-red: #ad3028;
+        --gh-red-text: #f0a35c;
+        --gh-gold: #cf9a2e;
+        --gh-jade: #2a6a56;
+        --gh-rim: #6a1b14;
+        --gh-light: #ffd56a;
+        --gh-reel: #efe3cb;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(1100px 520px at 15% -10%, var(--bg-glow), transparent 65%), var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.gh {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 16px 28px;
+    overflow-x: clip;
+}
+
+.gh [hidden] {
+    display: none !important;
+}
+
+.gh button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.gh button:disabled {
+    cursor: default;
+}
+
+.gh-zh {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/* Buttons shared by the page */
+.gh-ghost {
+    padding: 5px 12px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--ink);
+    font-size: 14px !important;
+}
+
+.gh-ghost:hover:not(:disabled) {
+    border-color: var(--ink);
+}
+
+.gh-solid {
+    padding: 7px 16px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 600;
+}
+
+.gh-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--gh-red-text);
+    font-size: 13px !important;
+    font-weight: 600;
+}
+
+.gh-link:hover:not(:disabled) {
+    text-decoration: underline;
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+.gh-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 18px;
+    padding: 18px 0 10px;
+}
+
+.gh-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.2;
+}
+
+.gh-brand-zh {
+    color: var(--gh-red);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.gh-brand-en {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+/* On phones the sound button shrinks to its icon. */
+@media (max-width: 640px) {
+    .gh-sound-label {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .gh-brand-zh {
+        color: var(--gh-gold);
+    }
+}
+
+/* --- Layout: picker left, draw panel right ------------------------------- */
+
+.gh-main {
+    display: grid;
+    gap: 28px;
+}
+
+.gh-play {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+@media (min-width: 920px) {
+    .gh-main {
+        grid-template-columns: minmax(0, 1fr) 380px;
+        align-items: start;
+    }
+
+    .gh-panel {
+        position: sticky;
+        top: 14px;
+        max-height: calc(100vh - 28px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+}
+
+/* --- Draw panel ---------------------------------------------------------- */
+
+.gh-panel {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+}
+
+.gh-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.gh-panel-title {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.gh-panel-head .gh-count {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* The picker's own summary line, for phones where the panel is far below. */
+.gh-drawline {
+    display: none;
+    justify-content: center;
+    align-items: baseline;
+    gap: 14px;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+@media (max-width: 919px) {
+    .gh-drawline {
+        display: flex;
+    }
+
+    .gh-panel {
+        scroll-margin-top: 12px;
+    }
+}
+
+.gh-sections {
+    display: grid;
+    gap: 12px;
+}
+
+.gh-box {
+    padding: 12px 14px 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.gh-box-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.gh-links {
+    display: flex;
+    gap: 12px;
+}
+
+.gh-chips,
+.gh-attr-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.gh-hint {
+    margin: -4px 0 4px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.gh-row-label {
+    margin: 10px 0 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.gh-chip {
+    padding: 3px 11px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--chip);
+    color: var(--ink);
+    font-size: 14px !important;
+    line-height: 1.6;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.gh-chip:hover:not(:disabled) {
+    border-color: var(--ink);
+}
+
+.gh-chip:active:not(:disabled) {
+    transform: scale(0.94);
+}
+
+/* Counts sit in a fixed-width slot so a change from 35 to 0 does not reflow the row. */
+.gh-chip small {
+    display: inline-block;
+    min-width: 2ch;
+    margin-left: 5px;
+    opacity: 0.6;
+    font-variant-numeric: tabular-nums;
+    text-align: left;
+}
+
+.gh-chip[aria-pressed="true"],
+.gh-tri[data-state="1"] {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.gh-tri[data-state="-1"] {
+    border-style: dashed;
+    border-color: var(--gh-red-text);
+    background: transparent;
+    color: var(--gh-red-text);
+    text-decoration: line-through;
+}
+
+.gh-chip.is-none {
+    opacity: 0.45;
+}
+
+.gh-budget {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+.gh-budget span {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.gh-budget-range {
+    width: 100%;
+    accent-color: var(--gh-red);
+}
+
+.gh-budget-out {
+    min-width: 7.5em;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.gh-drawbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 0 2px;
+}
+
+/* --- Randomiser switch --------------------------------------------------- */
+
+.gh-modes {
+    display: flex;
+    align-self: center;
+    gap: 2px;
+    margin-top: 6px;
+    padding: 3px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.gh-mode {
+    padding: 5px 16px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--ink);
+    font-size: 15px !important;
+    transition: background 0.2s, color 0.2s;
+}
+
+.gh-mode:hover:not(:disabled) {
+    background: var(--chip);
+}
+
+.gh-mode[aria-pressed="true"] {
+    background: var(--gh-red);
+    color: var(--gh-cream);
+}
+
+/* --- Readout: fixed height so the stage never jumps --------------------- */
+
+.gh-readout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 132px;
+    margin: 8px 0 4px;
+    overflow: hidden;
+    text-align: center;
+    scroll-margin-top: 12px;
+}
+
+.gh-r-zh {
+    overflow: hidden;
+    font-size: clamp(24px, 6.5vw, 36px);
+    font-weight: 800;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gh-r-emoji {
+    display: inline-block;
+    margin-right: 0.25em;
+}
+
+.gh-r-en,
+.gh-r-meta {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.gh-r-en {
+    font-size: 17px;
+    line-height: 1.35;
+}
+
+.gh-r-meta {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.is-busy .gh-r-zh,
+.is-busy .gh-r-en {
+    color: var(--muted);
+}
+
+.gh-readout.is-win {
+    animation: gh-pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.gh-readout.is-win .gh-r-zh {
+    color: var(--gh-red);
+}
+
+.gh-readout.is-win .gh-r-emoji {
+    animation: gh-hop 0.6s 0.2s ease-out 2;
+}
+
+@media (prefers-color-scheme: dark) {
+    .gh-readout.is-win .gh-r-zh {
+        color: var(--gh-gold);
+    }
+}
+
+@keyframes gh-pop {
+    0% { transform: scale(0.7); opacity: 0.2; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes gh-hop {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    40% { transform: translateY(-10px) rotate(-12deg); }
+    70% { transform: translateY(0) rotate(8deg); }
+}
+
+.gh-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+/* --- Stage, with sun rays behind a win ----------------------------------- */
+
+.gh-stage {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 240px;
+}
+
+.gh-stage::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: min(100%, 720px);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: repeating-conic-gradient(color-mix(in srgb, var(--gh-gold) 30%, transparent) 0deg 9deg, transparent 9deg 18deg);
+    -webkit-mask: radial-gradient(closest-side, #000 20%, transparent 98%);
+    mask: radial-gradient(closest-side, #000 20%, transparent 98%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s;
+}
+
+.gh-stage.is-win::before {
+    opacity: 1;
+    animation: gh-rays 16s linear infinite;
+}
+
+@keyframes gh-rays {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* --- Go button, after-pick actions, history ------------------------------ */
+
+.gh-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gh-go {
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    padding: 11px 30px;
+    border: 3px solid var(--gh-gold);
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--gh-red), var(--gh-rim));
+    color: var(--gh-cream);
+    font-size: 20px !important;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    box-shadow: 0 4px 0 #5a140e, 0 8px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.gh-go span {
+    margin-right: 0.3em;
+}
+
+.gh-go:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.gh-go:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #5a140e, 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gh-go:disabled {
+    filter: saturate(0.5) brightness(0.9);
+}
+
+.gh-go::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+    transform: translateX(-100%);
+    animation: gh-shine 3.2s ease-in-out infinite;
+}
+
+.gh-go:disabled::after {
+    animation: none;
+}
+
+@keyframes gh-shine {
+    60%, 100% { transform: translateX(100%); }
+}
+
+/* Hidden but still taking space, so nothing below jumps when it appears. */
+.gh-after {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+    visibility: hidden;
+}
+
+.gh-after.is-on {
+    visibility: visible;
+}
+
+.gh-history {
+    display: grid;
+    gap: 6px;
+    width: min(100%, 460px);
+    margin: 18px auto 0;
+}
+
+.gh-history-label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.gh-hist {
+    display: grid;
+    grid-template-columns: 3em minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--ink);
+    text-align: left;
+}
+
+.gh-hist:first-of-type {
+    border-color: var(--gh-gold);
+}
+
+.gh-hist:hover {
+    border-color: var(--ink);
+}
+
+.gh-hist-emoji {
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.gh-hist-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.3;
+}
+
+.gh-hist-zh {
+    font-weight: 700;
+}
+
+.gh-hist-en {
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 13px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gh-hist-price {
+    color: var(--muted);
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.gh-foot {
+    margin-top: 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+.gh-foot p {
+    margin: 4px 0;
+}
+
+.gh-foot a {
+    color: inherit;
+}
+
+.gh-sound {
+    margin-left: auto;
+}
+
+.gh-confetti {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* --- Menu dialog --------------------------------------------------------- */
+
+.gh-menu {
+    width: min(760px, calc(100vw - 24px));
+    max-width: none;
+    max-height: min(88vh, 960px);
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.gh-menu[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+.gh-menu::backdrop {
+    background: rgba(25, 12, 6, 0.55);
+    backdrop-filter: blur(2px);
+}
+
+@media (max-width: 640px) {
+    .gh-menu {
+        width: 100vw;
+        max-height: 92dvh;
+        margin: auto 0 0;
+        border-radius: 18px 18px 0 0;
+    }
+}
+
+.gh-menu-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px 6px;
+}
+
+.gh-menu-title {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.gh-menu-count {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.gh-menu-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 6px 18px 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+.gh-search {
+    flex: 1 1 240px;
+    min-width: 0;
+    padding: 7px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--chip);
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+}
+
+.gh-search:focus {
+    outline: 2px solid var(--gh-gold);
+    outline-offset: 1px;
+}
+
+.gh-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.gh-toggle input {
+    accent-color: var(--gh-red);
+}
+
+.gh-menu-list {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 18px 18px;
+}
+
+.gh-mgroup-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 12px 0 8px;
+    background: var(--card);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.gh-mcat-head {
+    margin: 10px 0 2px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.gh-mnote {
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.gh-menu-empty {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.gh-dish {
+    display: grid;
+    grid-template-columns: 2.7em minmax(0, 1fr) auto auto;
+    column-gap: 10px;
+    align-items: start;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.gh-dish + .gh-dish {
+    border-top: 1px solid var(--line);
+}
+
+.gh-dish.is-out {
+    opacity: 0.45;
+}
+
+.gh-dish.is-picked {
+    background: color-mix(in srgb, var(--gh-gold) 22%, transparent);
+}
+
+.gh-dish.is-flash {
+    animation: gh-flash-row 1.2s ease-out;
+}
+
+@keyframes gh-flash-row {
+    0%, 30% { box-shadow: inset 0 0 0 2px var(--gh-gold); }
+    100% { box-shadow: inset 0 0 0 2px transparent; }
+}
+
+.gh-dish-emoji {
+    font-size: 18px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.gh-dish-name {
+    display: flex;
+    flex-direction: column;
+}
+
+.gh-dish-zh {
+    font-weight: 700;
+}
+
+.gh-dish-en {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.gh-dish-tags {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.gh-dish-price {
+    font-variant-numeric: tabular-nums;
+}
+
+.gh-row-btn {
+    min-width: 5.5em;
+    padding: 2px 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--muted);
+    font-size: 12px !important;
+}
+
+.gh-row-btn:hover:not(:disabled) {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+/* --- Wheel --------------------------------------------------------------- */
+
+.gh-wheelbox {
+    position: relative;
+    padding-top: 14px;
+}
+
+.gh-wheel {
+    display: block;
+    cursor: pointer;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+}
+
+.gh-pointer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 2;
+    width: 26px;
+    height: 38px;
+    margin-left: -13px;
+    transform-origin: 50% 8px;
+    background: var(--gh-gold);
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 50% 100%, 0 35%);
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.35));
+}
+
+.gh-pointer::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gh-rim);
+}
+
+.gh-hub {
+    position: absolute;
+    top: calc(50% + 7px);
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 21%;
+    aspect-ratio: 1;
+    padding: 0;
+    transform: translate(-50%, -50%);
+    border: 4px solid var(--gh-gold);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--gh-red), var(--gh-rim));
+    color: var(--gh-cream);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    animation: gh-breathe 2.4s ease-in-out infinite;
+    transition: transform 0.15s;
+}
+
+.gh-hub span {
+    font-size: clamp(18px, 5vw, 32px);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.gh-hub small {
+    font-size: clamp(8px, 1.8vw, 12px);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.gh-hub:hover {
+    transform: translate(-50%, -50%) scale(1.06);
+}
+
+.is-busy .gh-hub {
+    animation: none;
+    cursor: default;
+}
+
+@keyframes gh-breathe {
+    50% { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3), 0 0 0 8px color-mix(in srgb, var(--gh-gold) 35%, transparent); }
+}
+
+/* --- Slot machine: a cabinet with three reels ----------------------------- */
+
+.gh-slotbox {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* 16 px padding and a 6 px gold rim each side: picker.js counts on these 44 px. */
+.gh-slot {
+    padding: 12px 16px 16px;
+    border: 6px solid transparent;
+    border-radius: 30px 30px 20px 20px;
+    background:
+        linear-gradient(180deg, #d8423a, #a5241c 55%, #7e1912) padding-box,
+        linear-gradient(160deg, #fff1b8, #e8b23a 25%, #9a6a12 55%, #f3cf6a 80%, #a8751a) border-box;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.28), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.gh-slot-marquee {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 4px 12px;
+    padding: 12px 10px 13px;
+    border-radius: 18px 18px 10px 10px;
+    background: radial-gradient(120% 140% at 50% 0%, #4a120d, #1f0806 70%);
+    box-shadow: inset 0 0 0 2px var(--gh-gold), inset 0 0 18px rgba(255, 200, 80, 0.25);
+}
+
+/* Rows of bulbs along the top and bottom of the marquee, chasing while the reels run. */
+.gh-slot-marquee::before,
+.gh-slot-marquee::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    left: 16px;
+    height: 6px;
+    /* "round" stretches the spacing so a whole number of bulbs fills the row. */
+    background: radial-gradient(circle, #ffe7a0 2.2px, transparent 3px) 0 50% / 12px 6px;
+    background-repeat: round no-repeat;
+    filter: drop-shadow(0 0 3px #e8b23a);
+}
+
+.gh-slot-marquee::before {
+    top: 4px;
+}
+
+.gh-slot-marquee::after {
+    bottom: 4px;
+}
+
+.gh-slot.is-running .gh-slot-marquee::before,
+.gh-slot.is-running .gh-slot-marquee::after {
+    animation: gh-chase 0.3s steps(2) infinite;
+}
+
+@keyframes gh-chase {
+    to { background-position-x: 12px; }
+}
+
+.gh-slot-name {
+    background: linear-gradient(180deg, #fff6c9, #f2c14e 45%, #b9801c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    line-height: 1.15;
+    filter: drop-shadow(0 1px 0 #5a140e) drop-shadow(0 0 8px rgba(255, 190, 60, 0.45));
+}
+
+.gh-slot-sub {
+    margin-right: -0.38em;
+    color: #f3d68a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.38em;
+}
+
+/* 6 px of bezel each side and 6 px between reels: picker.js counts these too. */
+.gh-slot-window {
+    position: relative;
+    padding: 6px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #2a0d09, #12050a);
+    box-shadow: inset 0 0 0 2px #c99a3a, inset 0 3px 8px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+}
+
+.gh-slot-reels {
+    display: flex;
+    gap: 6px;
+}
+
+.gh-slot-reel {
+    display: block;
+    border-radius: 6px;
+}
+
+.gh-slot-glass {
+    position: absolute;
+    inset: 6px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0.08));
+    pointer-events: none;
+}
+
+.gh-slot-band {
+    position: absolute;
+    top: calc(6px + (100% - 12px) / 3);
+    right: 0;
+    left: 0;
+    height: calc((100% - 12px) / 3);
+    border-top: 2px solid rgba(232, 178, 58, 0.9);
+    border-bottom: 2px solid rgba(232, 178, 58, 0.9);
+    pointer-events: none;
+}
+
+.gh-slot-band::before,
+.gh-slot-band::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    border: 8px solid transparent;
+    transform: translateY(-50%);
+}
+
+.gh-slot-band::before {
+    left: -4px;
+    border-left-color: #ff5a4a;
+}
+
+.gh-slot-band::after {
+    right: -4px;
+    border-right-color: #ff5a4a;
+}
+
+.gh-slot.is-win .gh-slot-band {
+    animation: gh-flash 0.18s 8 alternate;
+}
+
+@keyframes gh-flash {
+    to { background: rgba(232, 178, 58, 0.35); }
+}
+
+.gh-slot-tray {
+    height: 18px;
+    margin: 12px 18px 0;
+    border-radius: 6px 6px 12px 12px;
+    background: linear-gradient(180deg, #1c0705, #3a0f0a);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.gh-lever {
+    position: relative;
+    width: 44px;
+    height: 180px;
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+.gh-lever-hub {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    width: 24px;
+    height: 44px;
+    border-radius: 0 12px 12px 0;
+    background: linear-gradient(180deg, #9a9a9a, #f4f4f4 40%, #8c8c8c);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gh-lever-arm {
+    position: absolute;
+    bottom: 56px;
+    left: 4px;
+    width: 32px;
+    height: 118px;
+    transform-origin: 50% 100%;
+}
+
+.gh-lever-arm::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    width: 8px;
+    height: 94px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #8d8d8d, #f6f6f6 45%, #9a9a9a);
+}
+
+.gh-lever-arm::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff 0 9%, #ff8a7a 16%, var(--gh-red) 55%, #5a140e);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.gh-lever.is-pulled .gh-lever-arm {
+    animation: gh-pull 0.55s ease-in-out;
+}
+
+@keyframes gh-pull {
+    40% { transform: scaleY(-0.55); }
+}
+
+/* --- Fortune sticks (求签) ------------------------------------------------ */
+
+.gh-sticks {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.gh-cup {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 130px;
+    height: 330px;
+    margin-left: -65px;
+    padding: 0;
+    border: 0;
+    background: none;
+    transform-origin: 50% 90%;
+}
+
+.gh-cup:hover:not(.is-shaking) {
+    transform: rotate(-4deg);
+}
+
+/* The mouth is centred 176px up, where the body's top edge sits. */
+.gh-cup-mouth {
+    position: absolute;
+    bottom: 164px;
+    left: 0;
+    width: 130px;
+    height: 24px;
+    border-radius: 50%;
+    background: #33461a;
+}
+
+.gh-cup-sticks i {
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% + var(--x));
+    width: 9px;
+    height: var(--len);
+    margin-left: -4.5px;
+    border-radius: 3px 3px 1px 1px;
+    background: linear-gradient(180deg, var(--gh-red) 0 16px, transparent 16px), linear-gradient(90deg, #c99a58, #f4dfb2 45%, #c3924f);
+    transform: rotate(var(--r));
+    transform-origin: 50% 100%;
+}
+
+.gh-cup.is-shaking {
+    animation: gh-shake 0.22s ease-in-out infinite;
+}
+
+.gh-cup.is-shaking .gh-cup-sticks i {
+    animation: gh-jiggle 0.13s ease-in-out infinite alternate;
+    animation-delay: var(--d);
+}
+
+@keyframes gh-shake {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg) translateY(-8px); }
+}
+
+/* Rise a little and lean less, so a jiggling stick never leaves the mouth. */
+@keyframes gh-jiggle {
+    to { transform: translateY(-12px) rotate(calc(var(--r) * 0.8)); }
+}
+
+.gh-cup-body {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 176px;
+    border-radius: 0 0 22px 22px;
+    background:
+        repeating-linear-gradient(180deg, transparent 0 54px, rgba(50, 70, 15, 0.55) 54px 58px),
+        linear-gradient(90deg, #56722a, #a9c45c 30%, #cfe08a 45%, #8fae4a 70%, #4f6a24);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.gh-cup-body::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    right: 0;
+    left: 0;
+    height: 24px;
+    border-radius: 50%;
+    background: #9dbb55;
+    clip-path: inset(50% 0 0 0);
+}
+
+.gh-cup-label {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    padding: 8px 4px;
+    border: 2px solid var(--gh-gold);
+    border-radius: 4px;
+    background: var(--gh-red);
+    color: var(--gh-light);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    transform: translateX(-50%);
+    writing-mode: vertical-rl;
+}
+
+.gh-stick-out {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 56px;
+    min-height: 300px;
+    margin-left: -28px;
+    padding: 26px 0 12px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, var(--gh-red) 0 16px, transparent 16px), linear-gradient(90deg, #d4a865, #f7e4ba 45%, #c99a58);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+    color: var(--gh-ink);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gh-stick-out.is-out {
+    animation: gh-rise 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.15) forwards;
+}
+
+@keyframes gh-rise {
+    0% { opacity: 1; transform: translate(0, 230px) scale(0.45); }
+    55% { opacity: 1; transform: translate(104px, -16px) scale(1.06) rotate(13deg); }
+    100% { opacity: 1; transform: translate(96px, 0) scale(1) rotate(9deg); }
+}
+
+.gh-stick-no,
+.gh-stick-dish,
+.gh-stick-luck {
+    font-weight: 800;
+    line-height: 1;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+.gh-stick-no,
+.gh-stick-luck {
+    color: var(--gh-rim);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+}
+
+.gh-stick-dish {
+    letter-spacing: 0.04em;
+}
+
+.gh-stick-luck {
+    margin-top: auto;
+}
+
+.gh-stick-emoji {
+    font-size: 24px;
+    line-height: 1.15;
+    text-align: center;
+    white-space: pre-line;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gh *,
+    .gh *::before,
+    .gh *::after,
+    .gh-stage::before {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

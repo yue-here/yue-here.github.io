@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>回味轩 Golden House · What should I eat?</title>
+<meta name="description" content="Can't decide what to order at Golden House, Lensfield Road? Spin for it.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍚%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="picker.css">
+</head>
+<body>
+<div class="gh" id="gh">
+  <header class="gh-top">
+    <div class="gh-brand">
+      <span class="gh-brand-zh" lang="zh">回味轩</span>
+      <span class="gh-brand-en">Golden House</span>
+    </div>
+    <button class="gh-sound gh-ghost" type="button" aria-pressed="true"></button>
+  </header>
+
+  <main class="gh-main">
+    <section class="gh-play" aria-label="Picker">
+      <div class="gh-modes" role="group" aria-label="How to pick"></div>
+      <div class="gh-readout" aria-hidden="true">
+        <div class="gh-r-zh" lang="zh"></div>
+        <div class="gh-r-en"></div>
+        <div class="gh-r-meta"></div>
+      </div>
+      <p class="gh-status" role="status"></p>
+      <div class="gh-stage"></div>
+      <div class="gh-actions">
+        <button class="gh-go" type="button"></button>
+      </div>
+      <div class="gh-after">
+        <button class="gh-skip-winner gh-ghost" type="button">✕ Not this one</button>
+        <button class="gh-find-winner gh-ghost" type="button">📋 On the menu</button>
+      </div>
+      <div class="gh-history" aria-label="Recent picks"></div>
+      <div class="gh-drawline">
+        <span class="gh-count"></span>
+        <button class="gh-link gh-open-menu" type="button">📋 Menu</button>
+        <button class="gh-link gh-jump" type="button">Change ↓</button>
+      </div>
+    </section>
+
+    <aside class="gh-panel" aria-label="What's in the draw">
+      <div class="gh-panel-head">
+        <div>
+          <h2 class="gh-panel-title">What's in the draw</h2>
+          <span class="gh-count"></span>
+        </div>
+        <button class="gh-open-menu gh-solid" type="button">📋 Menu</button>
+      </div>
+      <div class="gh-sections"></div>
+      <div class="gh-box gh-attrs">
+        <div class="gh-box-head">
+          <span>Must have, or leave out</span>
+          <button class="gh-link gh-attrs-clear" type="button">Clear</button>
+        </div>
+        <p class="gh-hint">Tap once to require, again to leave out, again to clear.</p>
+        <div class="gh-row-label">Ingredients</div>
+        <div class="gh-attr-row gh-attr-ingredient"></div>
+        <div class="gh-row-label">Heat and nuts</div>
+        <div class="gh-attr-row gh-attr-heat"></div>
+        <label class="gh-budget">
+          <span>Budget</span>
+          <input class="gh-budget-range" type="range" min="0" max="1" step="0.5">
+          <output class="gh-budget-out"></output>
+        </label>
+      </div>
+      <div class="gh-drawbar">
+        <button class="gh-link gh-unskip" type="button" hidden></button>
+        <button class="gh-link gh-reset" type="button">Reset everything</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="gh-foot">
+    <p>Unofficial. Golden House, 12 Lensfield Rd, Cambridge · <a href="tel:+441223321221">01223 321221</a>. Menu and prices from January 2026.</p>
+    <p>🌶️ and 🥜 marks come from the menu wording. Most dishes contain egg, gluten and sesame oil, so tell the staff about allergies.</p>
+    <p><a href="https://yue-here.com/">yue-here.com</a> · Built with Claude.</p>
+  </footer>
+
+  <dialog class="gh-menu" aria-label="Menu">
+    <div class="gh-menu-head">
+      <div>
+        <div class="gh-menu-title">📋 Menu</div>
+        <div class="gh-menu-count"></div>
+      </div>
+      <button class="gh-menu-close gh-ghost" type="button" aria-label="Close" autofocus>✕</button>
+    </div>
+    <div class="gh-menu-tools">
+      <input class="gh-search" type="search" placeholder="Search: tofu, 豆腐, spicy, duck…" aria-label="Search the menu">
+      <label class="gh-toggle"><input class="gh-only" type="checkbox" checked> Only what's in the draw</label>
+    </div>
+    <div class="gh-menu-list"></div>
+  </dialog>
+</div>
+<script src="picker.js" defer></script>
+</body>
+</html>
